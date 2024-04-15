@@ -1,0 +1,74 @@
+/*
+Theme Name: NathalieMota
+Theme URI: URL do Tema (opcional)
+Description: Theme fait pour le projet 11 du parcours de Deellopeur Web Wordpress de OpenClassroom en avril 2024
+Author: Lorena Borges
+Author URI: lorenaborges.fr
+Version: 1.0
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+Text Domain: NathalieMota
+*/
+
+:root {
+    --cor-mariage: #e00000;
+    --cor-concert: #FE5858;
+    --cor-television: #FFD6D6;
+    --noir-100: #000;
+    --Bleu-fonc: #313144;
+    --Gris-fonc: #C4C4C4;
+    --Gris-medium: #D8D8D8;
+    --Gris-light: #E5E5E5;
+}
+
+
+.h1 {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 96px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.h2 {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 66px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 58px; /* 87.879% */
+    text-transform: uppercase;
+}
+
+.h3 {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.h4 /*description photo*/ {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
