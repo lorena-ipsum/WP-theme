@@ -1,25 +1,24 @@
-<?php
-/**
- * Template Name: Página Personalizada
- *
- * Este é o modelo para exibir páginas personalizadas do WordPress.
- * Você pode adicionar seu próprio conteúdo HTML e PHP aqui.
- */
+<?php get_header();
+?>
 
-get_header(); ?>
+<main id="site-content" role="main">
 
-<div id="primary" class="content-area">
-    <main id="main" class="site-main">
-        <?php
-        // Loop padrão do WordPress para exibir o conteúdo da página
-        while (have_posts()) :
-            the_post();
-            get_template_part('template-parts/content', 'page'); // Exibe o conteúdo da página
-        endwhile;
-        ?>
-    </main><!-- #main -->
-</div><!-- #primary -->
+    <?php
+    // Début de la boucle WordPress.
+    while ( have_posts() ) :
+        the_post();
 
-<?php
-get_sidebar();
-get_footer();
+        // Inclure le modèle de contenu de la page.
+        get_template_part( 'template-parts/content/content-page' );
+
+        // Si les commentaires sont autorisés ou s'il y a au moins un commentaire, inclure le modèle de commentaires.
+        if ( comments_open() || get_comments_number() ) :
+            comments_template();
+        endif;
+
+    endwhile; // Fin de la boucle WordPress.
+    ?>
+
+</main><!-- #site-content -->
+
+<?php get_footer(); ?>

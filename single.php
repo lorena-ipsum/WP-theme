@@ -1,27 +1,23 @@
-<?php
-/**
- * O modelo para exibir posts individuais.
- *
- * Este é o modelo padrão para exibir posts individuais do WordPress.
- * Você pode adicionar seu próprio conteúdo HTML e PHP aqui.
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+<main id="site-content" role="main">
 
-<div id="primary" class="content-area">
-    <main id="main" class="site-main">
-        <?php
-        // Loop padrão do WordPress para exibir posts individuais
-        while (have_posts()) :
-            the_post();
-            get_template_part('template-parts/content', 'single'); // Exibe o conteúdo do post individual
-            // Se você quiser adicionar comentários, descomente a linha abaixo
-            // comments_template();
-        endwhile;
-        ?>
-    </main><!-- #main -->
-</div><!-- #primary -->
+    <?php
+    // Début de la boucle WordPress.
+    while ( have_posts() ) :
+        the_post();
 
-<?php
-get_sidebar();
-get_footer();
+        // Inclure le modèle de contenu de la publication.
+        get_template_part( 'template-parts/content/content-single' );
+
+        // Si les commentaires sont autorisés ou s'il y a au moins un commentaire, inclure le modèle de commentaires.
+        if ( comments_open() || get_comments_number() ) :
+            comments_template();
+        endif;
+
+    endwhile; // Fin de la boucle WordPress.
+    ?>
+
+</main><!-- #site-content -->
+
+<?php get_footer(); ?>
