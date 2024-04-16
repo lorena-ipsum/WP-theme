@@ -20,57 +20,156 @@ Text Domain: NathalieMota
     --Gris-medium: #D8D8D8;
     --Gris-light: #E5E5E5;
 }
+@font-face {
+    font-family: 'Space Mono';
+    src: url('/wp-content/themes/NathalieMota/fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype'),
+         url('/wp-content/themes/NathalieMota/fonts/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Space Mono Italic';
+    src: url('/wp-content/themes/NathalieMota/fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype'),
+         url('/wp-content/themes/NathalieMota/fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/wp-content/themes/NathalieMota/fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
+         url('/wp-content/themes/NathalieMota/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Utilisation des polices */
+
+.h1,
+.h2,
+.h3,
+.h4 /*description photo*/ {
+    font-family: 'Space Mono Italic', monospace; /* Utilisation de la version italique pour les titres */
+    color: var(--noir-100);
+}
 
 .h1 {
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 96px;
-    font-style: italic;
+    font-size: 6.25rem; /* 96px converted to rem */
     font-weight: 700;
     line-height: normal;
-    text-transform: uppercase;
 }
 
 .h2 {
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 66px;
-    font-style: italic;
+    font-size: 4.125rem; /* 66px converted to rem */
     font-weight: 400;
-    line-height: 58px; /* 87.879% */
-    text-transform: uppercase;
+    line-height: 3.625rem; /* 58px converted to rem */
 }
 
 .h3 {
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 18px;
-    font-style: normal;
+    font-size: 1.125rem; /* 18px converted to rem */
     font-weight: 400;
-    line-height: normal;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
+    letter-spacing: 0.1125rem; /* 1.8px converted to rem */
 }
 
 .h4 /*description photo*/ {
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 14px;
-    font-style: normal;
+    font-size: 0.875rem; /* 14px converted to rem */
     font-weight: 400;
-    line-height: normal;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
+    letter-spacing: 0.0875rem; /* 1.4px converted to rem */
 }
 
 .p {
-    color: #000;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
+    font-family: Poppins, sans-serif; /* Utilisation de la police Poppins pour les paragraphes */
+    color: var(--noir-100);
+    font-size: 0.875rem; /* 14px converted to rem */
     font-weight: 300;
     line-height: normal;
 }
 
-/*.footer-menu
+
+/* footer */
+.site-footer {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 5rem; /* 80px converted to rem */
+    border-top: 0.09375rem solid var(--noir-100); /* 1.5px converted to rem */
+}
+
+#footer-menu {
+    padding: 0; 
+    display: flex;
+    gap: 5.375rem; /* 86px converted to rem */
+    list-style-type: none; 
+}
+
+#footer-menu li {
+    font-family: "Space Mono";
+    font-size: 1rem; /* 16px converted to rem */
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#footer-menu li a {
+    text-decoration: none;
+    color: var(--noir-100);
+    transition: font-weight 0.3s ease;
+}     
+
+#footer-menu li a:hover {
+    font-weight: 800; 
+}
+
+/*header*/
+.site-header {
+    height: 5rem; /* 80px converted to rem */
+    width: 100%; /* Largura do cabeçalho */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Espalha os itens nas extremidades */
+    align-items: center; /* Centraliza verticalmente os itens */
+    height: 100%; /* Altura 100% para alinhar corretamente os itens */
+    padding: 0 4.625rem; /* 74px converted to rem */
+    max-width: 75rem; /* 1200px converted to rem - Adiciona uma largura máxima para evitar que o cabeçalho se expanda demais em telas muito largas */
+    margin: 0 auto; /* Centraliza o cabeçalho na página */
+}
+
+.site-logo {
+    margin-left: 0; /* Remove a margem esquerda fixa */
+}
+
+.main-navigation {
+    margin-right: 0; /* Remove a margem direita fixa */
+}
+
+.menu-main-menu-container ul {
+    padding: 0; /* Remove o preenchimento padrão da lista */
+    margin: 0; /* Remove a margem padrão da lista */
+    display: flex;
+    gap: 2.8125rem; /* 45px converted to rem */
+    list-style-type: none; 
+}
+
+.menu-main-menu-container ul li {
+    font-family: "Space Mono";
+    font-size: 1rem; /* 16px converted to rem */
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--noir-100);
+    transition: color 0.3s ease; /* Adiciona uma transição suave para a cor */
+}
+
+.menu-main-menu-container ul li a {
+    text-decoration: none; /* Remove a decoração padrão dos links */
+    color: var(--noir-100); /* Cor dos links */
+    transition: font-weight 0.3s ease; /* Adiciona uma transição suave para o peso da fonte */
+}
+
+.menu-main-menu-container ul li a:hover {
+    font-weight: 800; /* Adiciona negrito ao passar o mouse sobre os links */
+}
