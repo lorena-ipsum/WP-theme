@@ -23,12 +23,27 @@
                 wp_nav_menu( array(
                     'theme_location' => 'main-menu', // Emplacement du menu à afficher
                     'menu_id'        => 'primary-menu', // ID attribué au menu
+                    'menu_class'     => 'main-menu', // Ajouter une classe CSS au menu
+                    'container'      => false, // Supprimer le conteneur <div> autour du menu
                 ) );
                 ?>
             </nav><!-- #site-navigation -->
         </div><!-- .header-container -->
+        
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">
         <!-- Votre contenu va ici -->
+
+        <!-- Modale de contact -->
+        <div id="contact-modal" class="modal">
+            <div class="modal-content">
+                <!-- Contenu de modal-contact.php -->
+                <?php include 'wp-content/themes/NathalieMota/templates_part/modal-contact.php'; ?>
+            </div>
+        </div>
     </div><!-- #content -->
+
+    <?php wp_footer(); ?>
+</body>
+</html>

@@ -45,8 +45,6 @@ Text Domain: NathalieMota
     font-style: normal;
 }
 
-
-
 /* Utilisation des polices */
 
 .h1,
@@ -89,8 +87,7 @@ Text Domain: NathalieMota
     line-height: normal;
 }
 
-
-/* footer */
+/*footer*/
 .site-footer {
     display: flex;
     justify-content: center; 
@@ -148,7 +145,7 @@ Text Domain: NathalieMota
     margin-right: 0; /* Remove a margem direita fixa */
 }
 
-.menu-main-menu-container ul {
+.main-menu {
     padding: 0; /* Remove o preenchimento padrão da lista */
     margin: 0; /* Remove a margem padrão da lista */
     display: flex;
@@ -156,7 +153,7 @@ Text Domain: NathalieMota
     list-style-type: none; 
 }
 
-.menu-main-menu-container ul li {
+.main-menu li {
     font-family: "Space Mono";
     font-size: 1rem; /* 16px converted to rem */
     font-style: normal;
@@ -167,12 +164,17 @@ Text Domain: NathalieMota
     transition: color 0.5s ease; /* Adiciona uma transição suave para a cor */
 }
 
-.menu-main-menu-container ul li a {
+.main-menu li a {
     text-decoration: none; /* Remove a decoração padrão dos links */
     color: var(--noir-100); /* Cor dos links */
     transition: font-weight 0.5s ease; /* Adiciona uma transição suave para o peso da fonte */
 }
 
-.menu-main-menu-container ul li a:hover {
-    font-weight: 700; /* Adiciona negrito ao passar o mouse sobre os links */
+.main-menu li a:hover {
+    font-weight: 600; /* Adiciona negrito ao passar o mouse sobre os links */
+}
+
+/*Modale Contact*/
+.modal-header {
+    width: 100%;
 }
