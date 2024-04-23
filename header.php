@@ -35,14 +35,6 @@
     <div id="content" class="site-content">
         <!-- Votre contenu va ici -->
 
-        <!-- Modale de contact -->
-        <div id="contact-modal" class="modal">
-            <div class="modal-content">
-                <!-- Contenu de modal-contact.php -->
-                <?php include 'wp-content/themes/NathalieMota/templates_part/modal-contact.php'; ?>
-            </div>
-        </div>
-    </div><!-- #content -->
 
     <?php wp_footer(); ?>
 </body>
