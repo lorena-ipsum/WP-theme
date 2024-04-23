@@ -1,4 +1,7 @@
 <?php
+// Inclure le fichier menu.php
+require_once get_template_directory() . '/menu.php';
+
 // Enqueue styles.css et scripts.js
 function my_theme_enqueue_assets() {
     // Enqueue le fichier style.css de votre thème
@@ -9,9 +12,9 @@ function my_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
 
-// Enregistrement de l'emplacement du menu
+// Enregistrement de l'emplacement du menu principal
 function register_my_menu() {
-    register_nav_menu('main-menu', __('Main Menu'));
+    register_nav_menu('main-menu', __('Main Menu', 'text-domain'));
 }
 add_action('after_setup_theme', 'register_my_menu');
 
@@ -26,7 +29,5 @@ function theme_support_setup() {
     add_theme_support('custom-logo');
 }
 add_action('after_setup_theme', 'theme_support_setup');
-
-
 
 ?>
