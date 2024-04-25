@@ -1,23 +1,23 @@
-<?php get_header(); ?>
+<?php
+get_header();  // Appelle votre fichier header.php
 
-<main id="site-content" role="main">
-
-    <?php
-    // Début de la boucle WordPress.
-    while ( have_posts() ) :
-        the_post();
-
-        // Inclure le modèle de contenu de la publication.
-        get_template_part( 'template-parts/content/content-single' );
-
-        // Si les commentaires sont autorisés ou s'il y a au moins un commentaire, inclure le modèle de commentaires.
-        if ( comments_open() || get_comments_number() ) :
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        ?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <header class="entry-header">
+                <h1 class="entry-title"><?php the_title(); ?></h1>
+            </header>
+            <div class="entry-content">
+                <?php the_content(); ?>
+            </div>
+        </article>
+        <?php
+        if ( comments_open() || get_comments_number() ) {
             comments_template();
-        endif;
+        }
+    endwhile;
+endif;
 
-    endwhile; // Fin de la boucle WordPress.
-    ?>
-
-</main><!-- #site-content -->
-
-<?php get_footer(); ?>
+get_footer();  // Appelle votre fichier footer.php
+?>
