@@ -293,3 +293,8 @@ Text Domain: NathalieMota
     cursor: pointer;
 }
 
+/*Contenu du CATALOGUE*/
+.related-images img {
+    width: 100%; /* Assure que les images prennent toute la largeur de leur conteneur */
+    margin-bottom: 20px; /* Espace entre les images */
+}
