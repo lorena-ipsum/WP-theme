@@ -1,0 +1,121 @@
+body.single-portfolio {
+    background-color: #F8F8F8;
+}
+
+h1.portfolio-title {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 66px;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 50%;
+    line-height: 58px; /* 87.879% */
+    text-transform: uppercase;
+}
+
+.info-left p {color: #000;
+    font-family: "Space Mono";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.portfolio-info, .related-photos {
+    overflow: hidden; /* Pour contenir les enfants flottants */
+    margin-bottom: 20px; /* Espace entre les sections */
+}
+
+.info-left, .info-right {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.info-left {
+    margin-top: 490px;
+    width: 50%; 
+    float: left;
+    border-bottom: 1px solid black;
+}
+
+.info-right img {
+    max-width: 563px;
+    height: 844px;
+    flex-shrink: 0;
+    object-fit: cover;
+    width: 50%; 
+    float: right;
+}
+
+
+.interaction-block {
+    background-color: #f8f8f8; /* Ou toute autre couleur de fond */
+    height: 118px; 
+    clear: both;/* Plus de styles pour les interactions */
+}
+
+/* Interation-Block */
+.interaction-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8F8F8;
+    padding: 0px;
+    border-bottom: 1px solid black;
+}
+
+.interest-text p {
+    color: #000;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    flex-basis: 25%; 
+}
+
+.contact-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 25%; 
+    padding: 8px 15px;
+}
+
+.contact-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 272px;
+    height: 50px;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background: #D8D8D8;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    transition: font-weight 0.3s ease;
+    /* Ajoutez des styles supplémentaires pour le bouton ici si nécessaire */
+}
+
+.contact-button:hover {
+    font-weight: 700;
+}
+
+.next-photo-container {
+    flex-basis: 50%; 
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+/* Ajoutez les styles pour le conteneur de droite ici quand ils seront définis */

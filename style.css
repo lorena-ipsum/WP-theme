@@ -88,6 +88,7 @@ Text Domain: NathalieMota
 .site-header {
     height: 5rem; /* 80px converted to rem */
     width: 100%;
+    background-color: white;
 }
 
 .header-container {
@@ -123,7 +124,7 @@ Text Domain: NathalieMota
 }
 
 .main-menu li a:hover {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* ***MENU BURGER*** */
@@ -217,6 +218,7 @@ Text Domain: NathalieMota
     align-items: center; 
     height: 5rem; 
     border-top: 0.09375rem solid var(--noir-100); 
+    background-color: white;
 }
 
 #footer-menu {
@@ -241,7 +243,7 @@ Text Domain: NathalieMota
 }     
 
 #footer-menu li a:hover {
-    font-weight: 800; 
+    font-weight: 700; 
 }
 
 /* Adaptations pour les mobiles */

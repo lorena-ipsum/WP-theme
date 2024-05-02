@@ -1,5 +1,6 @@
 <?php
 // ******** CONFIG GENERAUX
+
 // Enqueue
 function my_theme_enqueue_assets() {
     // Enqueue le fichier style.css de votre thème
@@ -11,10 +12,26 @@ function my_theme_enqueue_assets() {
     // Enqueue le fichier scripts.js de votre thème
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
 
-    // Enqueue le fichier modale.js
-    wp_enqueue_script('modale-scripts', get_template_directory_uri() . '/js/modale.js', array('jquery'), null, true);
+    // Enqueue le fichier modale-contact.js
+    wp_enqueue_script('modale-scripts', get_template_directory_uri() . '/js/modale-contact.js', array('jquery'), null, true);
+
+    // Enqueue le fichier contact-button.js spécifiquement pour les pages de portfolio
+    if (is_singular('portfolio')) {
+        wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/contact-button.js', array('jquery'), null, true);
+
+if (is_singular('portfolio')) {
+    global $post;
+    $portfolio_reference = get_field('reference', $post->ID);
+    wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
+}
+
+
+        // Enqueue le fichier single-portfolio.css si c'est une page de portfolio
+        wp_enqueue_style('single-portfolio-style', get_template_directory_uri() . '/css/single-portfolio.css');
+    }
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
+
 
 // Inclure le fichier menu.php
 require_once get_template_directory() . '/menu.php';
