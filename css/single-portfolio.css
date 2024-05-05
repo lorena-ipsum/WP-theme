@@ -71,6 +71,7 @@ h1.portfolio-title {
     background-color: #F8F8F8;
     padding: 0px;
     border-bottom: 1px solid black;
+    margin-right: 15px;
 }
 
 .interest-text p {
@@ -103,19 +104,79 @@ h1.portfolio-title {
     border-radius: 2px;
     background: #D8D8D8;
     box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    font-size: 12px;
+    font-style: normal;
     transition: font-weight 0.3s ease;
-    /* Ajoutez des styles supplémentaires pour le bouton ici si nécessaire */
 }
+
 
 .contact-button:hover {
     font-weight: 700;
+    font-size: 12px;
+    color: white !important;
+    background-color: #000;
 }
 
 .next-photo-container {
     flex-basis: 50%; 
     display: flex;
+    flex-direction: column;
     justify-content: end;
-    align-items: center;
+    align-items: flex-end;
 }
 
-/* Ajoutez les styles pour le conteneur de droite ici quand ils seront définis */
+.next-fleches {
+    display: flex;
+    flex-direction: row;
+}
+
+.fleche-gauche, .fleche-droite {
+    transition: transform 0.3s ease;
+}
+
+.fleche-gauche:hover, .fleche-droite:hover {
+    transform: scale(1.3); 
+}
+
+.related-photos {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.related-photos h2 {
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 0.875rem; /* 14px */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.0875rem; /* 1.4px */
+    text-transform: uppercase;
+    text-align: left;
+    margin-left: 6.5rem; /* 20px */
+    margin-bottom: 3.25rem; /* 52px */
+}
+
+
+
+.photos-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.related-photo {
+    flex: 1;
+    margin-right: 10px; /* Ajuster selon besoin */
+}
+
+.photos-container {
+    margin-left: 85px;
+    margin-right: 85px;
+    margin-bottom: 109px;
+}
+
+.related-photo a img {
+    width: 564px;
+    height: 495px;
+    object-fit: cover; /* S'assurer que les images couvrent toute la zone sans être déformées */
+}

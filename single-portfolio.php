@@ -40,20 +40,69 @@ if ( have_posts() ) :
                     <button class="contact-button" id="open-contact-modal">Contact</button>
                 </div>
                 <div class="next-photo-container">
-                    <p>je suis une img </p>
-                        <div class=next-fleches>
-                            <p>je suis un fleche gauche</p>
-                            <p>je suis un fleche droite</p>
-                        </div>
+                    <?php
+                    $next_post = get_next_post();
+                    if (!empty($next_post)): ?>
+                        <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">
+                            <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail', array('style' => 'width: 81px; height: 71px;')); ?>
+                        </a>
+                    <?php endif; ?>
+                    <div class="next-fleches">
+                        <?php
+                        $previous_post = get_previous_post();
+                        $next_post = get_next_post();
+                        if (!empty($previous_post)): ?>
+                            <a href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>" class="fleche-gauche">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/leftarrow.svg" alt="Précédent" />
+                            </a>
+                        <?php endif; ?>
+                        <?php if (!empty($next_post)): ?>
+                            <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="fleche-droite">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/rightarrow.svg" alt="Suivant" />
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <!-- La structure pour le conteneur de droite sera ajoutée plus tard -->
             </div>
             </div>
         </div>
             <div class="related-photos">
-                <!-- Ici, vous pouvez ajouter le code pour afficher les photos apparentées -->
+                <h2>Vous aimerez aussi</h2>
+                <div class="photos-container">
+                <?php
+                    $terms = wp_get_post_terms($post->ID, 'categorie', array("fields" => "ids"));
+                    if ($terms) {
+                        $args = array(
+                            'post_type' => 'portfolio', // Assurez-vous que c'est le bon type de post
+                            'posts_per_page' => 2, // Limitez à 2 entrées
+                            'post__not_in' => array($post->ID), // Excluez le post actuel
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'categorie',
+                                    'field' => 'term_id',
+                                    'terms' => $terms
+                                )
+                            )
+                        );
+                        $related_query = new WP_Query($args);
+
+                        if ($related_query->have_posts()) {
+                            while ($related_query->have_posts()) {
+                                $related_query->the_post();
+                                ?>
+                                <div class="related-photo">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_post_thumbnail('full', array('style' => 'width: 564px; height: 495px; object-fit: cover;')); ?>
+                                    </a>
+                                </div>
+                            <?php
+                            }
+                            wp_reset_postdata();
+                        }
+                    }
+                ?>
+                </div>
             </div>
-        </div>
         <?php
     endwhile;
 endif;
