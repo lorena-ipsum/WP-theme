@@ -25,7 +25,6 @@ if ( have_posts() ) :
                                 ?></p>
                     <p>Type: <?php echo esc_html( get_field('type') ); ?></p>
                     <p>Date de prise de vue: <?php echo get_the_date('Y'); ?></p>
-                    <!-- Ici, ajoutez votre lien de contact et la logique pour préremplir le champ de la référence de la photo -->
                 </div>
                 <div class="info-right">
                     <?php if ( has_post_thumbnail() ) : ?>

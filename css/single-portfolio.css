@@ -95,7 +95,7 @@ h1.portfolio-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 272px;
+    width: 272px !important;
     height: 50px;
     gap: 10px;
     flex-shrink: 0;
@@ -179,4 +179,96 @@ h1.portfolio-title {
     width: 564px;
     height: 495px;
     object-fit: cover; /* S'assurer que les images couvrent toute la zone sans être déformées */
+}
+
+/* Styles pour écrans portables */
+@media (max-width: 768px) {
+    .portfolio-info {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .info-left {
+        order: 1;
+        width: 100%;
+        margin-top: 0;
+        border-bottom: none;
+    }
+
+    .info-right {
+        order: 2;
+        width: 100%;
+        margin-top: 20px; /* Espace après info-left */
+    }
+
+    .info-right img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    .interaction-block {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        border-top: solid 1px;
+    }
+
+    .interest-text p {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px; /* Espace avant le bouton */
+    }
+
+    .contact-button-container {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .contact-button {
+        max-width: 233px;
+        padding: 10px 20px;
+    }
+
+    .next-photo-container {
+        display: none; /* Cacher la navigation entre les CPT sur mobile */
+    }
+
+    .related-photos {
+        margin-top: 20px; /* Espace après interaction block */
+        text-align: center;
+    }
+
+    .related-photos h2 {
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 1.25rem; /* Espace après le titre */
+    }
+
+    .photos-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 3rem; /* Espace avant le footer */
+    }
+
+    .related-photo {
+        width: 100%;
+        margin-bottom: 20px; /* Espace entre les photos */
+    }
+
+    .related-photo a img {
+        max-width: 19.875rem; /* environ 318px */
+        max-height: 17.438rem; /* environ 279px */
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .related-photo:last-child {
+        margin-bottom: 0;
+    }
 }
