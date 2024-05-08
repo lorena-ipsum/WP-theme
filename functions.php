@@ -17,7 +17,7 @@ function my_theme_enqueue_assets() {
 
     // Enqueue le fichier contact-button.js spécifiquement pour les pages de portfolio
     if (is_singular('portfolio')) {
-        wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/contact-button.js', array('jquery'), null, true);
+        wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/single-portfolio.js', array('jquery'), null, true);
 
 if (is_singular('portfolio')) {
     global $post;

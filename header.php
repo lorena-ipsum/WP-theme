@@ -20,7 +20,7 @@
 
             <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Menu principal', 'text-domain' ); ?>">
                 <button type="button" aria-expanded="false" aria-controls="primary-menu" class="menu-toggle">
-                     <span class="icon"><i class="fal fa-bars"></i></span>
+                     <span class="icon"><i class="fa fa-bars"></i></span>
                 </button>
 
                 <?php

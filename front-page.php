@@ -6,10 +6,11 @@ if ( have_posts() ) :
         ?>
         <article id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header class="entry-header">
-            <div><p>Page.php BLALABLA</p></div> 
+            <div><p>FRONT Page.php BLALABLA</p></div> 
             </header>
             <div class="entry-content">
                 <?php the_content(); ?>
+                <div><h2>Conteudo aqui</h2></div>
             </div>
             
         </article>

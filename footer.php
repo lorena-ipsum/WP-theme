@@ -12,6 +12,6 @@
         }
         ?>
     </div><!-- .footer-container -->
-    <?php get_template_part('templates_part/modal-contact'); ?>
+    <?php get_template_part('templates_parts/modal_contact'); ?>
 </footer><!-- #colophon -->
 

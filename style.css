@@ -21,6 +21,9 @@ Text Domain: NathalieMota
     --Gris-light: #E5E5E5;
 }
 
+.body {
+    background-color: #F2F2F2;
+}
 /* Utilisation des polices */
 @font-face {
     font-family: 'Space Mono';
@@ -134,10 +137,11 @@ Text Domain: NathalieMota
     border: none;
     font-size: 1.2em;
     color: var(--noir-100);
+    margin-top: 50px;
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 810px) {
     .header-container {
         justify-content: space-between; /* Assure que le logo et le menu burger sont sur les côtés opposés */
         padding: 0 10px; /* Espacement réduit sur les côtés */
@@ -146,6 +150,7 @@ Text Domain: NathalieMota
     }
 
     .site-logo, .custom-logo {
+    
         max-width: 139px; /* Largeur maximale du logo */
         height: 40px; /* Hauteur fixe pour le logo */
         display: flex; /* Utilise flexbox pour centrer le contenu du logo */

@@ -5,120 +5,120 @@ body.single-portfolio {
 h1.portfolio-title {
     color: #000;
     font-family: "Space Mono";
-    font-size: 66px;
+    font-size: 4.125rem; /* 66px */
     font-style: italic;
     font-weight: 400;
-    max-width: 50%;
-    line-height: 58px; /* 87.879% */
+    line-height: 3.625rem; /* 58px */
     text-transform: uppercase;
 }
 
-.info-left p {color: #000;
+.info-left p {
+    color: #000;
     font-family: "Space Mono";
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 1.4px;
+    letter-spacing: 0.0875rem; /* 1.4px */
     text-transform: uppercase;
 }
 
 .portfolio-container {
-    max-width: 1200px;
+    max-width: 75rem; /* 1200px */
     margin: 0 auto;
-    padding: 20px;
+    padding: 1.25rem; /* 20px */
     background-color: #f8f8f8;
 }
 
-.portfolio-info, .related-photos {
-    overflow: hidden; /* Pour contenir les enfants flottants */
-    margin-bottom: 20px; /* Espace entre les sections */
+.portfolio-info{
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.related-photos {
+    overflow: hidden;
+    margin-bottom: 1.25rem; /* 20px */
 }
 
 .info-left, .info-right {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 0.625rem; /* 10px */
+    width: 45%;
+
 }
 
 .info-left {
-    margin-top: 490px;
-    width: 50%; 
     float: left;
     border-bottom: 1px solid black;
 }
 
 .info-right img {
-    max-width: 563px;
-    height: 844px;
-    flex-shrink: 0;
+    max-width: 35.188rem; /* 563px */
+    height: 52.75rem; /* 844px */
+    
     object-fit: cover;
-    width: 50%; 
     float: right;
 }
 
-
 .interaction-block {
-    background-color: #f8f8f8; /* Ou toute autre couleur de fond */
-    height: 118px; 
-    clear: both;/* Plus de styles pour les interactions */
-}
-
-/* Interation-Block */
-.interaction-block {
+    background-color: #f8f8f8;
+    height: 7.375rem; /* 118px */
+    clear: both;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #F8F8F8;
     padding: 0px;
     border-bottom: 1px solid black;
-    margin-right: 15px;
+    margin-right: 0.9375rem; /* 15px */
 }
 
 .interest-text p {
     color: #000;
-    text-align: left;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     font-weight: 300;
-    flex-basis: 25%; 
+    flex-basis: 25%;
 }
 
 .contact-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-basis: 25%; 
-    padding: 8px 15px;
+    flex-basis: 25%;
+    padding: 0.5rem; /* 8px */
 }
 
 .contact-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 272px !important;
-    height: 50px;
-    gap: 10px;
+    width: 17rem; /* 272px */
+    height: 3.125rem; /* 50px */
+    gap: 0.625rem; /* 10px */
     flex-shrink: 0;
     cursor: pointer;
     border: none;
     border-radius: 2px;
     background: #D8D8D8;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
-    font-size: 12px;
+    box-shadow: 0px 0.125rem 0.0625rem 0px rgba(0, 0, 0, 0.02);
+    font-size: 0.75rem; /* 12px */
     font-style: normal;
     transition: font-weight 0.3s ease;
 }
 
-
 .contact-button:hover {
     font-weight: 700;
-    font-size: 12px;
-    color: white !important;
+    font-size: 0.75rem; /* 12px */
+    color: white;
     background-color: #000;
 }
 
 .next-photo-container {
-    flex-basis: 50%; 
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -134,12 +134,21 @@ h1.portfolio-title {
     transition: transform 0.3s ease;
 }
 
+.fleche-gauche {
+    margin-right: 15px;
+}
+
+.fleche-droite {
+    margin-left: 15px;
+}
+
+
 .fleche-gauche:hover, .fleche-droite:hover {
-    transform: scale(1.3); 
+    transform: scale(1.3);
 }
 
 .related-photos {
-    margin-top: 20px;
+    margin-top: 1.25rem; /* 20px */
     text-align: center;
 }
 
@@ -157,8 +166,6 @@ h1.portfolio-title {
     margin-bottom: 3.25rem; /* 52px */
 }
 
-
-
 .photos-container {
     display: flex;
     justify-content: space-between;
@@ -166,106 +173,98 @@ h1.portfolio-title {
 
 .related-photo {
     flex: 1;
-    margin-right: 10px; /* Ajuster selon besoin */
+    margin-right: 10px;
 }
 
 .photos-container {
-    margin-left: 85px;
-    margin-right: 85px;
-    margin-bottom: 109px;
+    margin-left: 5.3125rem; /* 85px */
+    margin-right: 5.3125rem; /* 85px */
+    margin-bottom: 6.8125rem; /* 109px */
 }
 
 .related-photo a img {
-    width: 564px;
-    height: 495px;
-    object-fit: cover; /* S'assurer que les images couvrent toute la zone sans être déformées */
+    max-width: 35.25rem; /* 564px */
+    max-height: 30.9375rem; /* 495px */
+    object-fit: cover;
 }
 
-/* Styles pour écrans portables */
-@media (max-width: 768px) {
-    .portfolio-info {
-        display: flex;
-        flex-direction: column-reverse;
+
+
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 1024px) { /* 768px */
+    s
+    body.single-portfolio {
+        padding: 0;
     }
 
-    .info-left {
-        order: 1;
+    .portfolio-info {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1.portfolio-title {
+        font-size: 3.125rem; /* 50px */
+    }
+
+    .info-left, .info-right {
         width: 100%;
-        margin-top: 0;
-        border-bottom: none;
+        float: none;
     }
 
     .info-right {
         order: 2;
-        width: 100%;
-        margin-top: 20px; /* Espace après info-left */
     }
 
-    .info-right img {
-        width: 100%;
-        height: auto;
-        max-width: none;
+    .info-left {
+        order: 1;
+        margin-top: 0;
     }
 
     .interaction-block {
         flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-        border-top: solid 1px;
     }
 
-    .interest-text p {
-        width: 100%;
+   
+    .interest-text, .contact-button-container {
         text-align: center;
-        margin-bottom: 10px; /* Espace avant le bouton */
-    }
-
-    .contact-button-container {
         width: 100%;
         justify-content: center;
-        margin-bottom: 50px;
-    }
-
-    .contact-button {
-        max-width: 233px;
-        padding: 10px 20px;
     }
 
     .next-photo-container {
-        display: none; /* Cacher la navigation entre les CPT sur mobile */
+        display: none;
     }
 
+   
+
     .related-photos {
-        margin-top: 20px; /* Espace après interaction block */
-        text-align: center;
+        margin-top: 0;
     }
 
     .related-photos h2 {
         text-align: center;
         margin-left: 0;
-        margin-bottom: 1.25rem; /* Espace après le titre */
+        margin-bottom: 1.25rem;
     }
 
     .photos-container {
-        display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 3rem; /* Espace avant le footer */
+        margin: 0;
     }
 
     .related-photo {
         width: 100%;
-        margin-bottom: 20px; /* Espace entre les photos */
+        margin-right: 0;
+        margin-bottom: 0.625rem; /* 10px */
     }
 
     .related-photo a img {
-        max-width: 19.875rem; /* environ 318px */
-        max-height: 17.438rem; /* environ 279px */
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+        width: 19.85rem; /* 317.665px */
+        height: 17.44rem; /* 278.801px */
+        max-width: 100%;
     }
 
     .related-photo:last-child {

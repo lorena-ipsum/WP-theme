@@ -31,6 +31,8 @@ if ( have_posts() ) :
                         <?php the_post_thumbnail('full'); ?>
                     <?php endif; ?>
                 </div>
+            </div>
+                
             <div class="interaction-block">
                 <div class="interest-text">
                     <p>Cette photo vous intéresse ?</p>
@@ -52,12 +54,12 @@ if ( have_posts() ) :
                         $next_post = get_next_post();
                         if (!empty($previous_post)): ?>
                             <a href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>" class="fleche-gauche">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/leftarrow.svg" alt="Précédent" />
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/leftarrow.jpg" class= "leftarrow" alt="Précédent" />
                             </a>
                         <?php endif; ?>
                         <?php if (!empty($next_post)): ?>
                             <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="fleche-droite">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/rightarrow.svg" alt="Suivant" />
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/rightarrow.jpg" class= "righttarrow"  alt="Suivant" />
                             </a>
                         <?php endif; ?>
                     </div>
@@ -65,46 +67,12 @@ if ( have_posts() ) :
             </div>
             </div>
         </div>
-            <div class="related-photos">
-                <h2>Vous aimerez aussi</h2>
-                <div class="photos-container">
-                <?php
-                    $terms = wp_get_post_terms($post->ID, 'categorie', array("fields" => "ids"));
-                    if ($terms) {
-                        $args = array(
-                            'post_type' => 'portfolio', // Assurez-vous que c'est le bon type de post
-                            'posts_per_page' => 2, // Limitez à 2 entrées
-                            'post__not_in' => array($post->ID), // Excluez le post actuel
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'categorie',
-                                    'field' => 'term_id',
-                                    'terms' => $terms
-                                )
-                            )
-                        );
-                        $related_query = new WP_Query($args);
-
-                        if ($related_query->have_posts()) {
-                            while ($related_query->have_posts()) {
-                                $related_query->the_post();
-                                ?>
-                                <div class="related-photo">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php the_post_thumbnail('full', array('style' => 'width: 564px; height: 495px; object-fit: cover;')); ?>
-                                    </a>
-                                </div>
-                            <?php
-                            }
-                            wp_reset_postdata();
-                        }
-                    }
-                ?>
-                </div>
-            </div>
+        <?php get_template_part('templates_parts/photo_block'); ?>
         <?php
     endwhile;
 endif;
+
+
 
 get_footer();
 ?>

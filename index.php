@@ -10,7 +10,7 @@ if ( have_posts() ) :
             </header>
             <div class="entry-content">
                 <?php the_excerpt(); ?>
-                <a href="<?php the_permalink(); ?>">Read More</a>
+                <a href="<?php the_permalink(); ?>">Continuer de lire</a>
             </div>
         </article>
         <?php
@@ -18,6 +18,6 @@ if ( have_posts() ) :
 else :
     ?><p><?php _e('Sorry, no posts matched your criteria.', 'text-domain'); ?></p><?php
 endif;
-
+ 
 get_footer();  // Appelle votre fichier footer.php
 ?>
