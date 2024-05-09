@@ -1,7 +1,5 @@
 <?php
-// ******** CONFIG GENERAUX
-
-// Enqueue
+// Enqueue des styles et scripts
 function my_theme_enqueue_assets() {
     // Enqueue le fichier style.css de votre thème
     wp_enqueue_style('style', get_stylesheet_uri());
@@ -18,44 +16,42 @@ function my_theme_enqueue_assets() {
     // Enqueue le fichier contact-button.js spécifiquement pour les pages de portfolio
     if (is_singular('portfolio')) {
         wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/single-portfolio.js', array('jquery'), null, true);
-
-if (is_singular('portfolio')) {
-    global $post;
-    $portfolio_reference = get_field('reference', $post->ID);
-    wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
-}
-
+        global $post;
+        $portfolio_reference = get_field('reference', $post->ID);
+        wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
 
         // Enqueue le fichier single-portfolio.css si c'est une page de portfolio
         wp_enqueue_style('single-portfolio-style', get_template_directory_uri() . '/css/single-portfolio.css');
     }
+
+    // Conditionally enqueue the front-page styles if is front page
+    if (is_front_page()) {
+        wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/front-page.css');
+    }
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
-
 
 // Inclure le fichier menu.php
 require_once get_template_directory() . '/menu.php';
 
-// Enregistrement de l'emplacement du menu principal
+// Enregistrement des menus
 function register_my_menu() {
     register_nav_menu('main-menu', __('Main Menu', 'text-domain'));
 }
 add_action('after_setup_theme', 'register_my_menu');
 
-// Enregistrement de l'emplacement du footer
 function register_footer_menu() {
     register_nav_menu('footer-menu', __('Footer Menu'));
 }
 add_action('after_setup_theme', 'register_footer_menu');
 
-// Ajout de la prise en charge du logo personnalisé
+// Support pour le logo personnalisé et les images mises en avant
 function theme_support_setup() {
     add_theme_support('custom-logo');
+    add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'theme_support_setup');
 
-// Ajouter la prise en charge des images mises en avant
-add_theme_support( 'post-thumbnails' );
 
-
+//FRONT-PAGE HERO HEADER
 

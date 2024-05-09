@@ -1,0 +1,25 @@
+/* Styles pour le hero de la page d'accueil */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 966px; /* Hauteur fixe comme demandé */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    width: 100vw;
+}
+
+/* Styles spécifiques pour le texte du hero */
+.hero-text {
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: 'Space Mono', monospace;
+    font-size: 96px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
