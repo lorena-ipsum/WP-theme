@@ -97,10 +97,13 @@
     border: none;
     margin-top: 1em;
     margin-bottom: 1em; /* Espacement après le bouton */
+    transition: background 1s ease, font-weight 0.3s ease;
 }
 
 .wpcf7-form input[type="submit"]:hover {
-    background: #bfbfbf; /* Assombrit le bouton au survol */
+    background: #000000;
+    cursor: pointer;
+    color: white
 }
 
 /* Supprimez les styles par défaut de Contact Form 7 pour la cohérence */

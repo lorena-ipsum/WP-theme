@@ -1,30 +1,37 @@
 <?php
 get_header();  // Inclut le fichier header.php
 
-// Section Hero avec image de fond aléatoire
-function get_random_hero_image() {
-    $args = array(
-        'post_type' => 'portfolio',  // Utilisation de votre Custom Post Type
-        'posts_per_page' => 1,
-        'orderby' => 'rand',
-        'post_status' => 'publish'  // Assurez-vous de récupérer uniquement les posts publiés
-    );
-
-    $query = new WP_Query($args);
-    if($query->have_posts()) {
-        $query->the_post();
-        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');  // Récupère l'URL de l'image à la une en pleine taille
-        wp_reset_postdata();  // Très important pour réinitialiser les données du post
-        return $image_url ? $image_url : get_template_directory_uri() . '/images/default.jpg';  // Fournit une image par défaut si aucune image à la une n'est trouvée
-    } else {
-        // Retournez une image par défaut si aucune image n'est trouvée
-        return get_template_directory_uri() . '/images/default.jpg';
-    }
-}
 ?>
 <section class="hero-section" style="background-image: url('<?php echo get_random_hero_image(); ?>');">
     <h1 class="hero-text">Photographe Event</h1>
 </section>
+<div class="portfolio-list">
+    <?php
+    $args = array(
+        'post_type' => 'portfolio',
+        'posts_per_page' => 8,  // Vous pouvez ajuster le nombre de posts affichés
+        'orderby' => 'date',
+        'order' => 'DESC'
+    );
+    $portfolio_query = new WP_Query($args);
+
+    if ($portfolio_query->have_posts()) :
+        while ($portfolio_query->have_posts()) : $portfolio_query->the_post();
+            ?>
+            <div class="portfolio-item">
+                <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail('medium', array('class' => 'portfolio-image')); ?>
+                </a>
+            </div>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    endif;
+    ?>
+</div>
+<div id="load-more">
+    <button>Charger plus</button>
+</div>
 
 <?php
 // Boucle WordPress principale pour afficher le contenu de la page

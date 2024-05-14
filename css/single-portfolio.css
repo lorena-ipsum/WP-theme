@@ -107,14 +107,15 @@ h1.portfolio-title {
     box-shadow: 0px 0.125rem 0.0625rem 0px rgba(0, 0, 0, 0.02);
     font-size: 0.75rem; /* 12px */
     font-style: normal;
-    transition: font-weight 0.3s ease;
+    transition: background 1s ease, font-weight 0.3s ease;
 }
 
 .contact-button:hover {
     font-weight: 700;
     font-size: 0.75rem; /* 12px */
-    color: white;
-    background-color: #000;
+    background: #000000;
+    cursor: pointer;
+    color: white
 }
 
 .next-photo-container {
@@ -187,9 +188,6 @@ h1.portfolio-title {
     max-height: 30.9375rem; /* 495px */
     object-fit: cover;
 }
-
-
-
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 1024px) { /* 768px */

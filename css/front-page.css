@@ -2,7 +2,7 @@
 .hero-section {
     background-size: cover;
     background-position: center;
-    height: 966px; /* Hauteur fixe comme demandé */
+    height: 60.375rem; /* 966px / 16 = 60.375rem */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,13 +13,81 @@
 
 /* Styles spécifiques pour le texte du hero */
 .hero-text {
-    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 0.1875rem; /* 3px / 16 = 0.1875rem */
     -webkit-text-stroke-color: #FFF;
     font-family: 'Space Mono', monospace;
-    font-size: 96px;
+    font-size: 6rem; /* 96px / 16 = 6rem */
     font-style: italic;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
+
+.portfolio-list {
+    display: grid;
+    grid-template-columns: repeat(2, 35.25rem); /* 564px / 16 = 35.25rem */
+    justify-content: center;
+    gap: 1.25rem; /* 20px / 16 = 1.25rem */
+    padding: 1.25rem; /* 20px / 16 = 1.25rem */
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    height: 30.9375rem; /* 495px / 16 = 30.9375rem */
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-title {
+    position: absolute;
+    bottom: 0.625rem; /* 10px / 16 = 0.625rem */
+    left: 0.625rem; /* 10px / 16 = 0.625rem */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.3125rem; /* 5px / 16 = 0.3125rem */
+    font-size: 1rem; /* 16px / 16 = 1rem */
+}
+
+#load-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+#load-more button {
+    width: 272px;
+    height: 50px;
+    padding: 8px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 2px;
+    border: none;
+    background: #D8D8D8;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    transition: background 1s ease, font-weight 0.3s ease;
+}
+
+#load-more button:hover {
+    background: #000000;
+    cursor: pointer;
+    color: white
+}
+
+.no-more-posts {
+    display: block; 
+    text-align: center;
+    margin: 20px auto;
+    font-family: 'Space Mono', monospace; 
+    color: #333; 
+    font-size: 1rem; 
+}
+
 
