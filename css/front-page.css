@@ -1,5 +1,6 @@
 /* Hero Header */
 .hero-section {
+    max-width: 1440px;  /* Limite la largeur de l'image du hero-header */       /* Assure que l'image est responsive */
     background-size: cover;
     background-position: center;
     height: 100vh;

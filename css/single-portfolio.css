@@ -1,7 +1,3 @@
-body.single-portfolio {
-    background-color: #F8F8F8;
-}
-
 h1.portfolio-title {
     color: #000;
     font-family: "Space Mono";
@@ -27,7 +23,6 @@ h1.portfolio-title {
     max-width: 75rem; /* 1200px */
     margin: 0 auto;
     padding: 1.25rem; /* 20px */
-    background-color: #f8f8f8;
 }
 
 .portfolio-info{
@@ -46,7 +41,7 @@ h1.portfolio-title {
 .info-left, .info-right {
     box-sizing: border-box;
     padding: 0.625rem; /* 10px */
-    width: 45%;
+    width: 50%;
 
 }
 
@@ -64,13 +59,11 @@ h1.portfolio-title {
 }
 
 .interaction-block {
-    background-color: #f8f8f8;
     height: 7.375rem; /* 118px */
     clear: both;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F8F8F8;
     padding: 0px;
     border-bottom: 1px solid black;
     margin-right: 0.9375rem; /* 15px */

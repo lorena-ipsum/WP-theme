@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.style.display = 'flex';
         });
     }); 
-// Fermer la modale
-    closeModalButton.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
 
 // Fermer la modale si on clique à l'extérieur du contenu
     window.addEventListener('click', function (event) {

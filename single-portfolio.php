@@ -8,15 +8,15 @@ if ( have_posts() ) :
             <div class="portfolio-info">
                 <div class="info-left">
                     <h1 class="portfolio-title"><?php the_title(); ?></h1>
-                    <p>Référence: <?php echo esc_html( get_field('reference') ); ?></p>
-                    <p>Catégorie: <?php 
+                    <p>Référence : <?php echo esc_html( get_field('reference') ); ?></p>
+                    <p>Catégorie : <?php 
                                     $terms = get_the_terms( $post->ID, 'categorie' );
                                     if ( $terms && ! is_wp_error($terms) ) {
                                         $term_names = wp_list_pluck($terms, 'name');
                                         echo esc_html( implode(', ', $term_names) );
                                     }
                                 ?></p>
-                    <p>Format: <?php 
+                    <p>Format : <?php 
                                     $format_terms = get_the_terms( $post->ID, 'formats' ); 
                                     if ( !empty($format_terms) && !is_wp_error($format_terms) ) {
                                         $format_names = wp_list_pluck($format_terms, 'name');
@@ -24,7 +24,7 @@ if ( have_posts() ) :
                                     }
                                 ?></p>
                     <p>Type: <?php echo esc_html( get_field('type') ); ?></p>
-                    <p>Date de prise de vue: <?php echo get_the_date('Y'); ?></p>
+                    <p>Année : <?php echo get_the_date('Y'); ?></p>
                 </div>
                 <div class="info-right">
                     <?php if ( has_post_thumbnail() ) : ?>
