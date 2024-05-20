@@ -1,5 +1,5 @@
 <?php
-// Enqueue des styles et scripts
+// ***** Enqueue des styles et scripts
 function my_theme_enqueue_assets() {
     // Styles globaux
     wp_enqueue_style('style', get_stylesheet_uri());
@@ -20,6 +20,12 @@ function my_theme_enqueue_assets() {
             'ajaxurl' => admin_url('admin-ajax.php'),
             'query_vars' => json_encode($wp_query->query_vars)
         ));
+
+        // Localiser wpApiSettings pour accéder à l'API REST
+        wp_localize_script('front-page', 'wpApiSettings', array(
+            'root' => esc_url_raw(rest_url()),
+            'nonce' => wp_create_nonce('wp_rest')
+        ));
     }
 
     // Scripts et styles pour les pages de type 'portfolio'
@@ -34,6 +40,8 @@ function my_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
 
+
+// ***** MENU
 // Inclure le fichier menu.php
 require_once get_template_directory() . '/menu.php';
 
@@ -51,7 +59,8 @@ function theme_support_setup() {
 }
 add_action('after_setup_theme', 'theme_support_setup');
 
-// Random hero images
+// ***** FRONT-PAGE
+//Random hero images
 function get_random_hero_image() {
     $args = array(
         'post_type' => 'portfolio',

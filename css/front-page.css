@@ -1,40 +1,70 @@
-/* Styles pour le hero de la page d'accueil */
+/* Hero Header */
 .hero-section {
     background-size: cover;
     background-position: center;
-    height: 60.375rem; /* 966px / 16 = 60.375rem */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--White);
     text-align: center;
     width: 100vw;
+    min-width: 23.4375rem; /* 375px */
+    min-height: 15.645625rem; /* 250.33px */
 }
 
-/* Styles spécifiques pour le texte du hero */
 .hero-text {
-    -webkit-text-stroke-width: 0.1875rem; /* 3px / 16 = 0.1875rem */
-    -webkit-text-stroke-color: #FFF;
+    -webkit-text-stroke-width: 0.1875rem; /* 3px */
+    -webkit-text-stroke-color: var(--White);
     font-family: 'Space Mono', monospace;
-    font-size: 6rem; /* 96px / 16 = 6rem */
+    font-size: 6rem; /* 96px */
     font-style: italic;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+    .hero-text {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text {
+        font-size: 3rem; 
+    }
+}
+
+/* Portfolio */
 .portfolio-list {
     display: grid;
-    grid-template-columns: repeat(2, 35.25rem); /* 564px / 16 = 35.25rem */
+    grid-template-columns: repeat(2, 35.25rem); /* 564px */
     justify-content: center;
-    gap: 1.25rem; /* 20px / 16 = 1.25rem */
-    padding: 1.25rem; /* 20px / 16 = 1.25rem */
+    gap: 1.25rem; /* 20px */
+    padding: 1.25rem; /* 20px */
+}
+
+@media (max-width: 1224px) {
+    .portfolio-list {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-list {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 1rem;
+    }
 }
 
 .portfolio-item {
     position: relative;
     overflow: hidden;
-    height: 30.9375rem; /* 495px / 16 = 30.9375rem */
+    height: 30.9375rem; /* 495px */
+    min-width: 19.8540625rem; /* 317.665px */
+    min-height: 17.4250625rem; /* 278.801px */
 }
 
 .portfolio-image {
@@ -46,12 +76,12 @@
 
 .portfolio-title {
     position: absolute;
-    bottom: 0.625rem; /* 10px / 16 = 0.625rem */
-    left: 0.625rem; /* 10px / 16 = 0.625rem */
-    color: white;
+    bottom: 0.625rem; /* 10px  */
+    left: 0.625rem; /* 10px  */
+    color: var(--White);
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.3125rem; /* 5px / 16 = 0.3125rem */
-    font-size: 1rem; /* 16px / 16 = 1rem */
+    padding: 0.3125rem; /* 5px  */
+    font-size: 1rem; /* 16px  */
 }
 
 #load-more {
@@ -62,32 +92,145 @@
 }
 
 #load-more button {
-    width: 272px;
-    height: 50px;
-    padding: 8px 15px;
+    width: 17rem; /* 272px / 16 */
+    height: 3.125rem; /* 50px / 16 */
+    padding: 0.5rem 0.9375rem; /* 8px 15px */
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    border-radius: 2px;
+    gap: 0.625rem; /* 10px */
+    border-radius: 0.125rem; /* 2px */
     border: none;
     background: #D8D8D8;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    box-shadow: 0px 0.125rem 0.0625rem 0px rgba(0, 0, 0, 0.02); /* 0px 2px 1px */
     transition: background 1s ease, font-weight 0.3s ease;
 }
 
 #load-more button:hover {
     background: #000000;
     cursor: pointer;
-    color: white
+    color: var(--White);
 }
 
 .no-more-posts {
     display: block; 
     text-align: center;
-    margin: 20px auto;
+    margin: 1.25rem auto; /* 20px */
     font-family: 'Space Mono', monospace; 
     color: #333; 
     font-size: 1rem; 
 }
 
+/* FIltres */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.125rem 9.125vw 1.25rem 9.125vw; /* 50px 146px 20px */
+}
 
+.filter-left {
+    display: flex;
+    gap: 0.625rem; /* 10px */
+}
+
+.custom-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 16.25rem; /* 260px / 16 */
+}
+
+select {
+    border-radius: 0.5rem; /* 8px */
+    border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
+    background: var(--White, #FFF);
+    padding: 0.6875rem 1.125rem; /* 11px 18px */
+    -webkit-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
+    -moz-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
+    appearance: none !important; /* Pour annuler le style par défaut */
+    width: 100%;
+    height: 2.625rem; /* 42px / 16 */
+    padding-right: 2.5rem; /* 40px / 16 */
+    transition: background 1.0s ease, border-color 0.5s ease;
+}
+
+select:hover {
+    background: #E00000;
+    color: var(--White);
+}
+
+/* Styliser l'icône de flèche */
+.custom-select i {
+    position: absolute;
+    right: 0.625rem; /* 10px */
+    pointer-events: none;
+    font-size: 0.875rem; /* 14px */
+}
+
+select option {
+    background: solid var(--White, #FFF) !important;
+    color: #000;
+}
+
+select option:hover {
+    background: #E00000;
+    color: var(--White);
+}
+
+/* Supprimer la bordure bleue par défaut lors de la sélection */
+select:focus {
+    outline: none;
+    border-color: var(--Blues-Gray2, #B8BBC2);
+}
+
+/* Media Queries pour écrans mobiles */
+@media (max-width: 1224px) {
+    .portfolio-list {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .filter-section {
+        flex-direction: column;
+        margin: 1.25rem 3.125vw; /* 20px */
+        align-items: center;
+    }
+
+    .filter-left, .filter-right {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .custom-select {
+        width: 100%; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
+        margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-list {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 1rem;
+    }
+
+    .hero-section {
+        height: fit-content;
+    }
+
+    .portfolio-item {
+        height: auto; /* Permet à la hauteur de s'ajuster */
+        min-height: 17.4250625rem; /* 278.801px */
+    }
+
+    .portfolio-image {
+        min-height: 17.4250625rem; /* 278.801px */
+        min-width: 19.8540625rem; /* 317.665px */
+        height: auto; /* Permet à la hauteur de s'ajuster */
+        width: cover;
+        object-fit: cover;
+        object-position: center;
+    }
+}
