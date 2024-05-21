@@ -65,14 +65,15 @@ if ( have_posts() ) :
                     </div>
                 </div>
             </div>
-            </div>
+                <div class="related-photos">
+                    <h2>Vous aimerez aussi</h2>
+                    <div class="photos-container">
+                        <?php get_template_part('templates_parts/photo_block'); ?>
+                    </div>
+                </div>                
+                <?php
+                endwhile;
+            endif;
+            ?> 
         </div>
-        <?php get_template_part('templates_parts/photo_block'); ?>
-        <?php
-    endwhile;
-endif;
-
-
-
-get_footer();
-?>
+        <?php get_footer() ?>

@@ -22,13 +22,6 @@ Text Domain: NathalieMota
     --White: #FFFFFF;
 }
 
-body {
-    background-color: #FFFFFF;
-    box-sizing: border-box;
-    max-width: 1440px;
-    margin: auto;
-}
-
 /* Utilisation des polices */
 @font-face {
     font-family: 'Space Mono';
@@ -53,6 +46,13 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+body {
+    background-color: #FFFFFF;
+    max-width: 1440px;
+    margin: auto;
+}
+
 
 /* ***HEADER*** */
 .site-header {
@@ -108,81 +108,6 @@ body {
     cursor: pointer;
 }
 
-@media (max-width: 810px) {
-    .header-container {
-        justify-content: space-between; /* Assure que le logo et le menu burger sont sur les côtés opposés */
-        padding: 0 10px; /* Espacement réduit sur les côtés */
-        align-items: center; /* Centre les éléments verticalement */
-        height: 60px; /* Hauteur fixe pour la barre de navigation */
-    }
-
-    .site-logo, .custom-logo {
-    
-        max-width: 139px; /* Largeur maximale du logo */
-        height: 40px; /* Hauteur fixe pour le logo */
-        display: flex; /* Utilise flexbox pour centrer le contenu du logo */
-        align-items: center; /* Centre verticalement le logo */
-        justify-content: center; /* Centre horizontalement le logo dans son div */
-    }
-
-
-    .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 40px !important; /* Place l'icône à droite */
-        top: 30px !important; /* Position verticale */
-        color:#000;
-        width: 27.4px !important; /* Largeur de l'icône */
-        height: 18.8px !important; /* Hauteur de l'icône */
-    }
-
-    .menu-toggle.fa-bars {
-        display: block;
-    }
-
-    .menu-toggle.fa-x {
-        position:absolute;
-        right: 1rem;
-        top: 1rem;
-        color: #000;
-    }
-
-    /* Cache le menu principal par défaut */
-    .main-navigation .main-menu {
-        display: none;
-        position: fixed;
-        top: 5rem; /* Hauteur du header */
-        left: 0;
-        right: 0;
-        background-color: var(--cor-mariage);
-        z-index: 9999;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Menu ouvert */
-    .main-navigation.toggled .main-menu {
-        display: flex;
-        height: calc(100% - 5rem); /* Hauteur moins le header */
-        overflow-y: auto;
-    }
-
-    .main-navigation.toggled .main-menu li a {
-        font-size: 2rem;
-        color: white;
-        padding: 1rem;
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Réduction du logo lorsque le menu est ouvert */
-    .main-navigation.toggled .site-logo {
-        transform: scale(0.6);
-        transition: transform 0.3s ease;
-    }
-}
-
 /* ***FOOTER*** */
 .site-footer {
     display: flex;
@@ -218,8 +143,76 @@ body {
     font-weight: 700; 
 }
 
-/* Adaptations pour les mobiles */
-@media (max-width: 768px) {
+/* Media Queries */
+@media (max-width: 810px) {
+    .header-container {
+        justify-content: space-between;
+        padding: 0 10px;
+        align-items: center; 
+        height: 60px;
+    }
+
+    .site-logo, .custom-logo {
+        max-width: 139px;
+        height: 40px; 
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 40px !important; 
+        top: 30px !important; 
+        color: #000;
+        width: 27.4px !important; 
+        height: 18.8px !important; 
+    }
+
+    .menu-toggle.fa-bars {
+        display: block;
+    }
+
+    .menu-toggle.fa-x {
+        position:absolute;
+        right: 1rem;
+        top: 1rem;
+        color: #000;
+    }
+
+    .main-navigation .main-menu {
+        display: none;
+        position: fixed;
+        top: 5rem; /* Hauteur du header */
+        left: 0;
+        right: 0;
+        background-color: var(--cor-mariage);
+        z-index: 9999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-navigation.toggled .main-menu {
+        display: flex;
+        height: calc(100% - 5rem); /* Hauteur moins le header */
+        overflow-y: auto;
+    }
+
+    .main-navigation.toggled .main-menu li a {
+        font-size: 2rem;
+        color: white;
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-navigation.toggled .site-logo {
+        transform: scale(0.6);
+        transition: transform 0.3s ease;
+    }
+
     #footer-menu {
         flex-direction: column; 
         align-items: center; 
@@ -235,40 +228,4 @@ body {
     #footer-menu li {
         text-align: center;
     }
-}
-
-
-/*Modale de Contact */
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-}
-
-.close {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/*Contenu du CATALOGUE*/
-.related-images img {
-    width: 100%; /* Assure que les images prennent toute la largeur de leur conteneur */
-    margin-bottom: 20px; /* Espace entre les images */
 }

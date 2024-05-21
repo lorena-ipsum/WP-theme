@@ -1,6 +1,6 @@
 /* Hero Header */
 .hero-section {
-    max-width: 1440px;  /* Limite la largeur de l'image du hero-header */       /* Assure que l'image est responsive */
+    max-width: 1440px;  
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -17,7 +17,7 @@
 .hero-text {
     -webkit-text-stroke-width: 0.1875rem; /* 3px */
     -webkit-text-stroke-color: var(--White);
-    font-family: 'Space Mono', monospace;
+    font-family: 'Space Mono';
     font-size: 6rem; /* 96px */
     font-style: italic;
     font-weight: 700;
@@ -25,40 +25,81 @@
     text-transform: uppercase;
 }
 
-@media (max-width: 1024px) {
-    .hero-text {
-        font-size: 4rem;
-    }
+.main-contenu {
+    max-width: 1148px;
+    margin: auto; 
+}
+/* Filtres */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 76px 0px 40px 0px;
 }
 
-@media (max-width: 768px) {
-    .hero-text {
-        font-size: 3rem; 
-    }
+.filter-left {
+    display: flex;
+    gap: 0.625rem; /* 10px */
+}
+
+.custom-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 16.25rem; /* 260px / 16 */
+}
+
+.custom-select i {
+    position: absolute;
+    right: 0.625rem; /* 10px */
+    pointer-events: none;
+    font-size: 0.875rem; /* 14px */
+}
+
+select {
+    border-radius: 0.5rem; /* 8px */
+    border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
+    background: var(--White, #FFF);
+    padding: 0.6875rem 1.125rem; /* 11px 18px */
+    -webkit-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
+    -moz-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
+    appearance: none !important; /* Pour annuler le style par défaut */
+    width: 100%;
+    height: 2.625rem; /* 42px / 16 */
+    padding-right: 2.5rem; /* 40px / 16 */
+    transition: background 1.0s ease, border-color 0.5s ease;
+}
+
+select:hover {
+    background: #E00000;
+    color: var(--White);
+}
+
+select option {
+    background: solid var(--White, #FFF) !important;
+    color: #000;
+}
+
+select option:hover {
+    background: #E00000;
+    color: var(--White);
+}
+
+/* Supprimer la bordure bleue par défaut lors de la sélection */
+select:focus {
+    outline: none;
+    border-color: var(--Blues-Gray2, #B8BBC2);
 }
 
 /* Portfolio */
 .portfolio-list {
-    display: grid;
-    grid-template-columns: repeat(2, 35.25rem); /* 564px */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 1.25rem; /* 20px */
-    padding: 1.25rem; /* 20px */
 }
 
-@media (max-width: 1224px) {
-    .portfolio-list {
-        grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-list {
-        grid-template-columns: 1fr; /* Une seule colonne */
-        gap: 1rem;
-    }
-}
 
 .portfolio-item {
     position: relative;
@@ -69,9 +110,12 @@
 }
 
 .portfolio-image {
-    width: 100%;
-    height: 100%;
+    max-width: 564px;
+    max-height: 495px;
+    min-height: 17.4250625rem; /* 278.801px */
+    min-width: 19.8540625rem; /* 317.665px */
     object-fit: cover;
+    object-position: center;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -121,78 +165,33 @@
     font-size: 1rem; 
 }
 
-/* FIltres */
-.filter-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 3.125rem 9.125vw 1.25rem 9.125vw; /* 50px 146px 20px */
-}
-
-.filter-left {
-    display: flex;
-    gap: 0.625rem; /* 10px */
-}
-
-.custom-select {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 16.25rem; /* 260px / 16 */
-}
-
-select {
-    border-radius: 0.5rem; /* 8px */
-    border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
-    background: var(--White, #FFF);
-    padding: 0.6875rem 1.125rem; /* 11px 18px */
-    -webkit-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
-    -moz-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
-    appearance: none !important; /* Pour annuler le style par défaut */
-    width: 100%;
-    height: 2.625rem; /* 42px / 16 */
-    padding-right: 2.5rem; /* 40px / 16 */
-    transition: background 1.0s ease, border-color 0.5s ease;
-}
-
-select:hover {
-    background: #E00000;
-    color: var(--White);
-}
-
-/* Styliser l'icône de flèche */
-.custom-select i {
-    position: absolute;
-    right: 0.625rem; /* 10px */
-    pointer-events: none;
-    font-size: 0.875rem; /* 14px */
-}
-
-select option {
-    background: solid var(--White, #FFF) !important;
-    color: #000;
-}
-
-select option:hover {
-    background: #E00000;
-    color: var(--White);
-}
-
-/* Supprimer la bordure bleue par défaut lors de la sélection */
-select:focus {
-    outline: none;
-    border-color: var(--Blues-Gray2, #B8BBC2);
-}
-
-/* Media Queries pour écrans mobiles */
-@media (max-width: 1224px) {
+/* Media Queries  */
+@media (max-width: 768px) {
     .portfolio-list {
-        grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
+        grid-template-columns: 1fr; /* Une seule colonne */
         gap: 1rem;
+    }
+
+    .hero-section {
+        height: fit-content;
+    }
+
+    .hero-text {
+        font-size: 3rem; 
+    }
+
+    .portfolio-item {
+        height: auto; /* Permet à la hauteur de s'ajuster */
+        min-height: 17.4250625rem; /* 278.801px */
     }
 }
 
+
 @media (max-width: 1000px) {
+    .hero-text {
+        font-size: 4rem;
+    }
+
     .filter-section {
         flex-direction: column;
         margin: 1.25rem 3.125vw; /* 20px */
@@ -208,30 +207,5 @@ select:focus {
     .custom-select {
         width: 100%; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
         margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-list {
-        grid-template-columns: 1fr; /* Une seule colonne */
-        gap: 1rem;
-    }
-
-    .hero-section {
-        height: fit-content;
-    }
-
-    .portfolio-item {
-        height: auto; /* Permet à la hauteur de s'ajuster */
-        min-height: 17.4250625rem; /* 278.801px */
-    }
-
-    .portfolio-image {
-        min-height: 17.4250625rem; /* 278.801px */
-        min-width: 19.8540625rem; /* 317.665px */
-        height: auto; /* Permet à la hauteur de s'ajuster */
-        width: cover;
-        object-fit: cover;
-        object-position: center;
     }
 }

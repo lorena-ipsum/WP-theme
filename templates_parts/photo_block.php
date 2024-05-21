@@ -1,6 +1,3 @@
-<div class="related-photos">
-    <h2>Vous aimerez aussi</h2>
-    <div class="photos-container">
         <?php
             $terms = wp_get_post_terms($post->ID, 'categorie', array("fields" => "ids"));
             if ($terms) {
@@ -24,7 +21,7 @@
                         ?>
                         <div class="related-photo">
                             <a href="<?php the_permalink(); ?>">
-                                <?php the_post_thumbnail('full', array('style' => 'width: 564px; height: 495px; object-fit: cover;')); ?>
+                                <?php the_post_thumbnail('full', array('class' => 'related-photo')); ?>
                             </a>
                         </div>
                         <?php
@@ -33,5 +30,3 @@
                 }
             }
         ?>
-    </div>                
-</div>

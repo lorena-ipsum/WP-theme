@@ -1,8 +1,8 @@
 /*MODALE DE CONTACT*/
+
+/* Styles globaux pour la modale */
 .modal {
-    width: 597px;
-    height: 769px;
-    display: none;
+    display: none; /* Désactivé par défaut */
     position: fixed;
     left: 0;
     top: 0;
@@ -16,34 +16,40 @@
 }
 
 .modal-content {
-    width: 597px;
-    height: 769px;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    max-width: 597px;
+    max-height: 769px;
     border: 5px solid #000;
     padding: 0px;
     background: #FFF;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
+/* Styles pour l'entête de la modale avec une image */
 .modal-header img {
     padding-top: 50px;
-    width: 100%; 
-    display: block; 
+    width: 100%;
+    display: block;
 }
 
+/* Bouton de fermeture personnalisé */
 .close {
-    display: none;
+    display: none; /* Masqué par défaut */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-
+/* Styles pour le formulaire dans la modale */
 .wpcf7-form {
-    width: 100%; 
-    max-width: 263px; /* Largeur maximale du formulaire pour correspondre à la largeur des champs */
-    display: flex; 
-    flex-direction: column; 
+    width: 100%;
+    max-width: 263px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     font-family: 'Poppins', sans-serif;
     color: #313144;
@@ -51,7 +57,6 @@
     font-weight: 500;
     text-transform: uppercase;
 }
-
 
 .wpcf7-form label {
     font-style: normal;
@@ -62,7 +67,8 @@
 
 .wpcf7-form input[type="text"],
 .wpcf7-form input[type="email"],
-.wpcf7-form textarea {
+.wpcf7-form textarea,
+.wpcf7-form input[type="submit"] {
     width: 263px;
     margin-bottom: 1em;
     border-radius: 8px;
@@ -75,32 +81,26 @@
 }
 
 .wpcf7-form input[type="submit"] {
-    width: 263px; 
-    height: 50px; 
-    margin-left: auto; 
-    margin-right: auto;
-    display: block; 
+    height: 50px;
+    margin: auto;
+    display: block;
     padding: 8px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
     border-radius: 2px;
     background: #D8D8D8;
     box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
     cursor: pointer;
     border: none;
-    margin-top: 1em;
+    margin-top: 0.5em;
     margin-bottom: 1em;
     transition: background 1s ease, font-weight 0.3s ease;
 }
 
 .wpcf7-form input[type="submit"]:hover {
     background: #000000;
-    cursor: pointer;
-    color: white
+    color: white;
 }
 
-/* Supprimez les styles par défaut de Contact Form 7 pour la cohérence */
+/* Suppression des styles par défaut de Contact Form 7 */
 span.wpcf7-form-control-wrap {
     display: block;
     margin-bottom: 1em;
@@ -112,29 +112,25 @@ span.wpcf7-form-control-wrap {
     width: 263px;
 }
 
-/* Media query pour les styles mobiles */
+/* Media Queries pour les styles mobiles */
 @media (max-width: 768px) {
     .modal-content {
         width: 286px;
         height: 583px;
-        margin: auto; /* Ajoute automatiquement une marge égale de tous les côtés, centrage horizontal */
-        position: relative; /* Permet à la modale de s'adapter à la fenêtre d'affichage */
+        margin: auto;
+        position: relative;
         top: 50%;
-        transform: translateY(-50%); /* Centrage vertical */
+        transform: translateY(-50%);
     }
 
-    /* Assurez-vous que les champs et le bouton remplissent la largeur de la modale sur mobile */
     .wpcf7-form input[type="text"],
     .wpcf7-form input[type="email"],
     .wpcf7-form textarea,
     .wpcf7-form input[type="submit"] {
-        width: calc(100% - 24px); /* Ajuste la largeur en fonction du padding interne */
-        margin-left: auto; /* Centrage horizontal des champs de formulaire */
-        margin-right: auto;
+        width: calc(100% - 24px);
     }
 
-    /* Ajuste la taille de la police pour les petits écrans, si nécessaire */
     .wpcf7-form {
-        font-size: 12px; /* Ou toute autre taille appropriée pour les mobiles */
+        font-size: 12px;
     }
 }
