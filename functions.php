@@ -29,12 +29,13 @@ function my_theme_enqueue_assets() {
     }
 
     // Scripts et styles pour les pages de type 'portfolio'
+    // Enqueue script for single portfolio
     if (is_singular('portfolio')) {
         wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/single-portfolio.js', array('jquery'), null, true);
+        wp_enqueue_script('hover-thumbnails', get_template_directory_uri() . '/js/hover-thumbnails.js', array('jquery'), null, true);
         global $post;
         $portfolio_reference = get_field('reference', $post->ID);
         wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
-
         wp_enqueue_style('single-portfolio-style', get_template_directory_uri() . '/css/single-portfolio.css');
     }
 }

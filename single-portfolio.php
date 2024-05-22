@@ -42,8 +42,8 @@ if ( have_posts() ) :
                 </div>
                 <div class="next-photo-container">
                     <?php
-                    $next_post = get_next_post();
-                    if (!empty($next_post)): ?>
+    $next_post = get_next_post();
+    if (!empty($next_post)): ?>
                         <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">
                             <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail', array('style' => 'width: 81px; height: 71px;')); ?>
                         </a>
@@ -53,16 +53,17 @@ if ( have_posts() ) :
                         $previous_post = get_previous_post();
                         $next_post = get_next_post();
                         if (!empty($previous_post)): ?>
-                            <a href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>" class="fleche-gauche">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/leftarrow.jpg" class= "leftarrow" alt="Précédent" />
+                            <a href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>" class="fleche-gauche" data-thumbnail="<?php echo get_the_post_thumbnail_url($previous_post->ID, 'thumbnail'); ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/leftarrow.jpg" class="leftarrow" alt="Précédent" />
                             </a>
                         <?php endif; ?>
                         <?php if (!empty($next_post)): ?>
-                            <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="fleche-droite">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/rightarrow.jpg" class= "righttarrow"  alt="Suivant" />
+                            <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="fleche-droite" data-thumbnail="<?php echo get_the_post_thumbnail_url($next_post->ID, 'thumbnail'); ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/rightarrow.jpg" class="rightarrow" alt="Suivant" />
                             </a>
                         <?php endif; ?>
                     </div>
+                    <div class="thumbnail-preview"></div>
                 </div>
             </div>
                 <div class="related-photos">

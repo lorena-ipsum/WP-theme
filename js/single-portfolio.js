@@ -15,3 +15,17 @@ jQuery(document).ready(function($) {
     });
 });
 
+jQuery(document).ready(function($) {
+    $('.fleche-gauche, .fleche-droite').hover(function() {
+        var thumbnailUrl = $(this).data('thumbnail');
+        if (thumbnailUrl) {
+            var offset = $(this).offset();
+            $('.thumbnail-preview').html('<img src="' + thumbnailUrl + '">').css({
+                top: offset.top + $(this).height() + 10,
+                left: offset.left
+            }).fadeIn();
+        }
+    }, function() {
+        $('.thumbnail-preview').fadeOut();
+    });
+});
