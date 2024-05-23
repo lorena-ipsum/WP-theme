@@ -112,6 +112,10 @@ function apply_filters_posts() {
     $format = isset($_POST['format']) ? $_POST['format'] : '';
     $order = isset($_POST['order']) ? $_POST['order'] : 'DESC';
 
+    error_log('Category: ' . $category);
+    error_log('Format: ' . $format);
+    error_log('Order: ' . $order);
+
     $args = array(
         'post_type' => 'portfolio',
         'posts_per_page' => -1,
@@ -125,7 +129,7 @@ function apply_filters_posts() {
     if ($category) {
         $tax_query[] = array(
             'taxonomy' => 'categorie',
-            'field' => 'id',
+            'field' => 'term_id',
             'terms' => $category,
         );
     }
@@ -133,7 +137,7 @@ function apply_filters_posts() {
     if ($format) {
         $tax_query[] = array(
             'taxonomy' => 'formats',
-            'field' => 'id',
+            'field' => 'term_id',
             'terms' => $format,
         );
     }
@@ -141,6 +145,8 @@ function apply_filters_posts() {
     if (!empty($tax_query)) {
         $args['tax_query'] = $tax_query;
     }
+
+    error_log(print_r($args, true));
 
     $query = new WP_Query($args);
     if ($query->have_posts()) {
@@ -164,4 +170,3 @@ function apply_filters_posts() {
 }
 add_action('wp_ajax_nopriv_apply_filters', 'apply_filters_posts');
 add_action('wp_ajax_apply_filters', 'apply_filters_posts');
-?>

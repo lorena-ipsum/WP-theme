@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchCategoriesAndFormats() {
-    fetch(`${wpApiSettings.root}wp/v2/categories`, {
+    fetch(`${wpApiSettings.root}wp/v2/categorie`, {
         headers: {
             'X-WP-Nonce': wpApiSettings.nonce
         }
