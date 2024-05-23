@@ -1,35 +1,28 @@
 <?php
-// ***** Enqueue des styles et scripts
+// Enqueue des styles et scripts
 function my_theme_enqueue_assets() {
-    // Styles globaux
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style('modal-style', get_template_directory_uri() . '/css/modal-style.css');
-
-    // Scripts globaux
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
     wp_enqueue_script('modale-scripts', get_template_directory_uri() . '/js/modale-contact.js', array('jquery'), null, true);
 
-    // Scripts et styles pour la page d'accueil
     if (is_front_page()) {
         wp_enqueue_script('front-page', get_template_directory_uri() . '/js/front-page.js', array('jquery'), null, true);
         wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/front-page.css');
 
-        // Préparation des données pour le script
-        global $wp_query; // Assurez-vous d'avoir accès à la variable globale
+        global $wp_query;
         wp_localize_script('front-page', 'ajaxpagination', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
-            'query_vars' => json_encode($wp_query->query_vars)
+            'query_vars' => json_encode($wp_query->query_vars),
+            'nonce' => wp_create_nonce('load_more_nonce')
         ));
 
-        // Localiser wpApiSettings pour accéder à l'API REST
         wp_localize_script('front-page', 'wpApiSettings', array(
             'root' => esc_url_raw(rest_url()),
             'nonce' => wp_create_nonce('wp_rest')
         ));
     }
 
-    // Scripts et styles pour les pages de type 'portfolio'
-    // Enqueue script for single portfolio
     if (is_singular('portfolio')) {
         wp_enqueue_script('contact-button-script', get_template_directory_uri() . '/js/single-portfolio.js', array('jquery'), null, true);
         wp_enqueue_script('hover-thumbnails', get_template_directory_uri() . '/js/hover-thumbnails.js', array('jquery'), null, true);
@@ -41,12 +34,9 @@ function my_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
 
-
-// ***** MENU
-// Inclure le fichier menu.php
+// Enregistrement des menus
 require_once get_template_directory() . '/menu.php';
 
-// Enregistrement des menus
 function register_my_menu() {
     register_nav_menu('main-menu', __('Main Menu', 'text-domain'));
     register_nav_menu('footer-menu', __('Footer Menu'));
@@ -60,8 +50,7 @@ function theme_support_setup() {
 }
 add_action('after_setup_theme', 'theme_support_setup');
 
-// ***** FRONT-PAGE
-//Random hero images
+// Images héroïques aléatoires
 function get_random_hero_image() {
     $args = array(
         'post_type' => 'portfolio',
@@ -83,6 +72,8 @@ function get_random_hero_image() {
 
 // Traitement AJAX pour charger plus de posts
 function load_more_posts() {
+    check_ajax_referer('load_more_nonce', '_ajax_nonce');
+
     $args = array(
         'post_type'      => 'portfolio',
         'posts_per_page' => 8,
@@ -92,6 +83,7 @@ function load_more_posts() {
 
     $query = new WP_Query($args);
     if ($query->have_posts()) {
+        ob_start();
         while ($query->have_posts()) {
             $query->the_post();
             ?>
@@ -102,10 +94,74 @@ function load_more_posts() {
             </div>
             <?php
         }
+        $data = ob_get_clean();
+        wp_send_json_success($data);
     } else {
-        echo '<div class="no-more-posts">Aucun autre post à charger.</div>';
+        wp_send_json_error('Aucun autre post à charger.');
     }
     wp_die();
 }
 add_action('wp_ajax_nopriv_load_more', 'load_more_posts');
 add_action('wp_ajax_load_more', 'load_more_posts');
+
+// Traitement AJAX pour appliquer les filtres
+function apply_filters_posts() {
+    check_ajax_referer('load_more_nonce', '_ajax_nonce');
+
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $format = isset($_POST['format']) ? $_POST['format'] : '';
+    $order = isset($_POST['order']) ? $_POST['order'] : 'DESC';
+
+    $args = array(
+        'post_type' => 'portfolio',
+        'posts_per_page' => -1,
+        'orderby' => 'date',
+        'order' => $order,
+        'post_status' => 'publish'
+    );
+
+    $tax_query = array('relation' => 'AND');
+
+    if ($category) {
+        $tax_query[] = array(
+            'taxonomy' => 'categorie',
+            'field' => 'id',
+            'terms' => $category,
+        );
+    }
+
+    if ($format) {
+        $tax_query[] = array(
+            'taxonomy' => 'formats',
+            'field' => 'id',
+            'terms' => $format,
+        );
+    }
+
+    if (!empty($tax_query)) {
+        $args['tax_query'] = $tax_query;
+    }
+
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) {
+            $query->the_post();
+            ?>
+            <div class="portfolio-item">
+                <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
+                </a>
+            </div>
+            <?php
+        }
+        $data = ob_get_clean();
+        wp_send_json_success($data);
+    } else {
+        wp_send_json_error('Aucun post trouvé pour les filtres sélectionnés.');
+    }
+    wp_die();
+}
+add_action('wp_ajax_nopriv_apply_filters', 'apply_filters_posts');
+add_action('wp_ajax_apply_filters', 'apply_filters_posts');
+?>

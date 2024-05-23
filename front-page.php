@@ -24,8 +24,8 @@
             <div class="custom-select">
                 <select id="sort-filter">
                     <option value="">Trier par</option>
-                    <option value="date_desc">A partir des plus récents</option>
-                    <option value="date_asc">A partir des plus anciens</option>
+                    <option value="DESC">A partir des plus récents</option>
+                    <option value="ASC">A partir des plus anciens</option>
                 </select>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -35,7 +35,7 @@
         <?php
         $args = array(
             'post_type' => 'portfolio',
-            'posts_per_page' => 8,  // nombre de posts affichés
+            'posts_per_page' => 8,
             'orderby' => 'date',
             'order' => 'DESC'
         );
@@ -60,7 +60,6 @@
     </div>
 </section>
 <?php
-// Boucle WordPress principale pour afficher le contenu de la page
 if (have_posts()) :
     while (have_posts()) : the_post();
         ?>
@@ -73,5 +72,5 @@ if (have_posts()) :
     endwhile;
 endif;
 
-get_footer();  // Appelle le fichier footer.php
+get_footer();
 ?>
