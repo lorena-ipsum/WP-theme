@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php /* JE SUIS PARFAIT */get_header(); ?>
 <section class="hero-section" style="background-image: url('<?php echo get_random_hero_image(); ?>');">
     <h1 class="hero-text">Photographe Event</h1>
 </section>
@@ -31,7 +31,9 @@
             </div>
         </div>
     </div>
+    
     <div class="portfolio-list">
+    
         <?php
         $args = array(
             'post_type' => 'portfolio',
@@ -54,7 +56,9 @@
             wp_reset_postdata();
         endif;
         ?>
+        
     </div>
+    
     <div id="load-more">
         <button>Charger plus</button>
     </div>

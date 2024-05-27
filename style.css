@@ -150,6 +150,17 @@ body {
         padding: 0 10px;
         align-items: center; 
         height: 60px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .site-header {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
     }
 
     .site-logo, .custom-logo {
@@ -164,7 +175,7 @@ body {
         display: flex;
         position: absolute;
         right: 40px !important; 
-        top: 30px !important; 
+        top: -20px !important; 
         color: #000;
         width: 27.4px !important; 
         height: 18.8px !important; 

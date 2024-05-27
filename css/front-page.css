@@ -15,8 +15,9 @@
 }
 
 .hero-text {
-    -webkit-text-stroke-width: 0.1875rem; /* 3px */
+    -webkit-text-stroke-width: 0.8621307611465454px;
     -webkit-text-stroke-color: var(--White);
+    color: transparent; /* Torna a cor do texto transparente */
     font-family: 'Space Mono';
     font-size: 6rem; /* 96px */
     font-style: italic;
@@ -29,6 +30,7 @@
     max-width: 1148px;
     margin: auto; 
 }
+
 /* Filtres */
 .filter-section {
     display: flex;
@@ -100,7 +102,6 @@ select:focus {
     gap: 1.25rem; /* 20px */
 }
 
-
 .portfolio-item {
     position: relative;
     overflow: hidden;
@@ -168,7 +169,10 @@ select:focus {
 /* Media Queries  */
 @media (max-width: 768px) {
     .portfolio-list {
-        grid-template-columns: 1fr; /* Une seule colonne */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
     }
 
@@ -177,21 +181,26 @@ select:focus {
     }
 
     .hero-text {
-        font-size: 3rem; 
+        -webkit-text-stroke-width: 0.3px;
+        font-size: 27.588px; 
     }
 
     .portfolio-item {
         height: auto; /* Permet à la hauteur de s'ajuster */
         min-height: 17.4250625rem; /* 278.801px */
+        width: 317.665px;
+        height: 278.801px;
+        flex-shrink: 0;
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
-
 @media (max-width: 1000px) {
-    .hero-text {
-        font-size: 4rem;
-    }
-
     .filter-section {
         flex-direction: column;
         margin: 1.25rem 3.125vw; /* 20px */

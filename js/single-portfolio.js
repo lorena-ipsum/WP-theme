@@ -1,4 +1,4 @@
-console.log ("This is the  contact button portfolio trucbidule")
+console.log("This code is so beautiful");
 
 jQuery(document).ready(function($) {
     $('#open-contact-modal').on('click', function() {
@@ -13,9 +13,7 @@ jQuery(document).ready(function($) {
     $('#close-modal-button').on('click', function() {
         $('#contact-modal').fadeOut();
     });
-});
 
-jQuery(document).ready(function($) {
     $('.fleche-gauche, .fleche-droite').hover(function() {
         var thumbnailUrl = $(this).data('thumbnail');
         if (thumbnailUrl) {
