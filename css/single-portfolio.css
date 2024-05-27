@@ -167,11 +167,14 @@ h1.portfolio-title {
     border: 1px solid #000;
     background: #fff;
     z-index: 1000;
+    width: 150px;
+    height: 150px;
 }
 
 .thumbnail-preview img {
-    max-width: 150px;
-    max-height: 150px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 /* Media Queries for Mobile Devices */

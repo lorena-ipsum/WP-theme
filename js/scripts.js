@@ -1,70 +1,69 @@
-console.log("you got it girl")
-// *** MENU MOBILE *** 
-// Fonction pour gérer l'affichage du menu burger
-function toggleMenu() {
-    const siteNavigation = document.querySelector('.main-navigation');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const icon = document.querySelector('.menu-toggle .icon i');
+console.log("you got it girl!");
 
-    const isOpen = siteNavigation.classList.contains('toggled');
-    siteNavigation.classList.toggle('toggled');
-
-    // Mise à jour de l'icône avec Font Awesome en changeant les classes
-    if (isOpen) {
-        icon.classList.remove('fa-x');
-        icon.classList.add('fa-bars');
-        menuToggle.setAttribute('aria-expanded', 'false');
-    } else {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-x');
-        menuToggle.setAttribute('aria-expanded', 'true');
-    }
-}
-
-// Ajoute les écouteurs d'événements une fois que le DOM est chargé
+// Fonctionnalité de menu mobile
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('click', function() {
+            const siteNavigation = document.querySelector('.main-navigation');
+            const icon = this.querySelector('i');
+            siteNavigation.classList.toggle('toggled');
+            if (siteNavigation.classList.contains('toggled')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-x');
+            } else {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-x');
+            }
+        });
     }
 });
 
-// Fonction pour gérer les sous-menus
-function toggleSubMenu(button) {
-    const parentLi = button.parentNode;
-    const subMenu = parentLi.querySelector('.sub-menu');
-    subMenu.classList.toggle('open');
-}
-
-// Fonction pour l'effet de fondu
+// Effet de fondu pour les éléments avec la classe 'fade'
 function fadeIn() {
     const elements = document.querySelectorAll('.fade');
     elements.forEach(element => {
         element.style.opacity = 1;
     });
 }
+document.addEventListener('DOMContentLoaded', fadeIn);
+window.addEventListener('load', fadeIn);
 
-// Ajoute les écouteurs d'événements une fois que le DOM est chargé
-document.addEventListener('DOMContentLoaded', function() {
-    // Code pour initialiser le menu burger et les sous-menus
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-    }
+// Initialisation de la lightbox et des survols
+function initializePortfolioHoverAndLightbox() {
+    // Suppression des événements existants pour éviter la duplication
+    jQuery('body').off('click', '.expand-icon');
+    jQuery('body').off('click', '.close-lightbox');
+    jQuery('.portfolio-item a').off('click');
 
-    const menuItems = document.querySelectorAll('li.menu-item-has-children');
-    menuItems.forEach(function(el) {
-        const button = el.querySelector('button');
-        if (button) {
-            button.addEventListener('click', function() {
-                toggleSubMenu(button);
-            });
-        }
+    // Ouverture de la lightbox seulement si on clique sur l'icône d'agrandissement
+    jQuery('body').on('click', '.expand-icon', function(e) {
+        e.preventDefault(); // Empêche le comportement de lien normal
+        e.stopPropagation(); // Arrête la propagation pour éviter le lien parent de s'activer
+        var imgSrc = jQuery(this).closest('.portfolio-item').find('.portfolio-image').attr('src');
+        jQuery('body').append(`<div class="lightbox-modal"><span class="close-lightbox">&times;</span><img src="${imgSrc}" alt="" class="lightbox-content"></div>`);
+        jQuery('.lightbox-modal').fadeIn();
     });
 
-// Effet de fondu pour les éléments avec la classe 'fade'
-    fadeIn();
-});
+    // Fermeture de la lightbox
+    jQuery('body').on('click', '.close-lightbox', function() {
+        jQuery('.lightbox-modal').fadeOut(function() {
+            jQuery(this).remove();
+        });
+    });
 
-// Effet de fondu au chargement complet de la page
-window.addEventListener('load', fadeIn);
+    // Assurer que les clics sur les icônes et les images redirigent correctement
+    jQuery('.portfolio-item a').on('click', function(e) {
+        if (jQuery(e.target).is('.expand-icon')) {
+            e.preventDefault(); // Empêche le comportement de lien normal si clic sur icône d'agrandissement
+        } else if (jQuery(e.target).is('.view-icon')) {
+            // Le clic sur l'icône de vue doit également rediriger correctement
+            window.location.href = jQuery(this).attr('href');
+        }
+    });
+}
+
+// Initialisation au chargement du document
+jQuery(document).ready(function($) {
+    initializePortfolioHoverAndLightbox();
+});

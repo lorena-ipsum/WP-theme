@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchCategoriesAndFormats();
     setupLoadMore();
     setupFilters();
+    initializePortfolioHoverAndLightbox(); // Initial call to set up hover and lightbox
 });
 
 function fetchCategoriesAndFormats() {
@@ -56,6 +57,8 @@ function setupLoadMore() {
             if (response.success) {
                 document.querySelector('.portfolio-list').insertAdjacentHTML('beforeend', response.data);
                 loadMoreBtn.textContent = 'Charger plus';
+                // Réinitialiser les fonctionnalités de survol et de lightbox
+                initializePortfolioHoverAndLightbox();
             } else {
                 loadMoreBtn.textContent = 'Aucun autre post à charger';
                 loadMoreBtn.disabled = true;
@@ -95,6 +98,8 @@ function applyFilters() {
     .then(response => {
         if (response.success) {
             document.querySelector('.portfolio-list').innerHTML = response.data;
+            // Réinitialiser les fonctionnalités de survol et de lightbox
+            initializePortfolioHoverAndLightbox();
         } else {
             document.querySelector('.portfolio-list').innerHTML = '<p>Aucun post trouvé pour les filtres sélectionnés.</p>';
         }

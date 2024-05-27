@@ -1,4 +1,4 @@
-<?php /* JE SUIS PARFAIT */get_header(); ?>
+<?php get_header(); ?>
 <section class="hero-section" style="background-image: url('<?php echo get_random_hero_image(); ?>');">
     <h1 class="hero-text">Photographe Event</h1>
 </section>
@@ -24,8 +24,8 @@
             <div class="custom-select">
                 <select id="sort-filter">
                     <option value="">Trier par</option>
-                    <option value="DESC">A partir des plus récents</option>
-                    <option value="ASC">A partir des plus anciens</option>
+                    <option value="DESC">À partir des plus récents</option>
+                    <option value="ASC">À partir des plus anciens</option>
                 </select>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
@@ -33,7 +33,6 @@
     </div>
     
     <div class="portfolio-list">
-    
         <?php
         $args = array(
             'post_type' => 'portfolio',
@@ -42,21 +41,33 @@
             'order' => 'DESC'
         );
         $portfolio_query = new WP_Query($args);
-
         if ($portfolio_query->have_posts()) :
             while ($portfolio_query->have_posts()) : $portfolio_query->the_post();
+                $categories = get_the_terms(get_the_ID(), 'categorie');
+                $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
                 ?>
+
+                
                 <div class="portfolio-item">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
-                    </a>
-                </div>
+    <div class="portfolio-hover">
+        <a href="<?php the_permalink(); ?>" class="view-icon">
+            <i class="fa-solid fa-eye"></i>
+        </a>
+        <i class="fa-solid fa-expand expand-icon"></i>
+        <div class="image-title"><?php the_title(); ?></div>
+        <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
+    </div>
+    <a href="<?php the_permalink(); ?>">
+        <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
+    </a>
+</div>
+
+
                 <?php
             endwhile;
             wp_reset_postdata();
         endif;
         ?>
-        
     </div>
     
     <div id="load-more">
@@ -75,6 +86,5 @@ if (have_posts()) :
         <?php
     endwhile;
 endif;
-
 get_footer();
 ?>
