@@ -31,6 +31,9 @@ function my_theme_enqueue_assets() {
         wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
         wp_enqueue_style('single-portfolio-style', get_template_directory_uri() . '/css/single-portfolio.css');
     }
+
+    // Enqueue Lightbox Script globally
+    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
 

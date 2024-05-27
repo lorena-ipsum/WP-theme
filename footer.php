@@ -13,5 +13,10 @@
         ?>
     </div><!-- .footer-container -->
     <?php get_template_part('templates_parts/modal_contact'); ?>
+    
+    <!-- Lightbox HTML -->
+    <div class="lightbox-modal" style="display:none;">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="" class="lightbox-content">
+    </div>
 </footer><!-- #colophon -->
-

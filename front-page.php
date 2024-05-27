@@ -46,23 +46,19 @@
                 $categories = get_the_terms(get_the_ID(), 'categorie');
                 $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
                 ?>
-
-                
                 <div class="portfolio-item">
-    <div class="portfolio-hover">
-        <a href="<?php the_permalink(); ?>" class="view-icon">
-            <i class="fa-solid fa-eye"></i>
-        </a>
-        <i class="fa-solid fa-expand expand-icon"></i>
-        <div class="image-title"><?php the_title(); ?></div>
-        <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
-    </div>
-    <a href="<?php the_permalink(); ?>">
-        <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
-    </a>
-</div>
-
-
+                    <div class="portfolio-hover">
+                        <a href="<?php the_permalink(); ?>" class="view-icon">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <i class="fa-solid fa-expand expand-icon"></i>
+                        <div class="image-title"><?php the_title(); ?></div>
+                        <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
+                    </div>
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
+                    </a>
+                </div>
                 <?php
             endwhile;
             wp_reset_postdata();
