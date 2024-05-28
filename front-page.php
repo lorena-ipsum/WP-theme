@@ -45,13 +45,16 @@
             while ($portfolio_query->have_posts()) : $portfolio_query->the_post();
                 $categories = get_the_terms(get_the_ID(), 'categorie');
                 $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
+                $reference = get_field('reference'); // Get the reference from ACF
                 ?>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
                     <div class="portfolio-hover">
                         <a href="<?php the_permalink(); ?>" class="view-icon">
-                            <i class="fa-solid fa-eye"></i>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_eye.png" alt="View Icon">
                         </a>
-                        <i class="fa-solid fa-expand expand-icon"></i>
+                        <a href="#" class="expand-icon">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_fullscreen.png" alt="Fullscreen Icon">
+                        </a>
                         <div class="image-title"><?php the_title(); ?></div>
                         <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
                     </div>

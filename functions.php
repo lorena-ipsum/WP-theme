@@ -3,6 +3,7 @@
 function my_theme_enqueue_assets() {
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style('modal-style', get_template_directory_uri() . '/css/modal-style.css');
+    wp_enqueue_style('lightbox-style', get_template_directory_uri() . '/css/lightbox.css');
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
     wp_enqueue_script('modale-scripts', get_template_directory_uri() . '/js/modale-contact.js', array('jquery'), null, true);
 
@@ -173,3 +174,31 @@ function apply_filters_posts() {
 }
 add_action('wp_ajax_nopriv_apply_filters', 'apply_filters_posts');
 add_action('wp_ajax_apply_filters', 'apply_filters_posts');
+
+// Lightbox
+function get_adjacent_post_url($post, $previous = true) {
+    $adjacent_post = get_adjacent_post(false, '', $previous);
+    return $adjacent_post ? get_permalink($adjacent_post->ID) : '';
+}
+
+function enqueue_lightbox_scripts() {
+    if (is_singular('portfolio')) {
+        global $post;
+
+        // Récupérer tous les IDs des posts de type portfolio
+        $args = array(
+            'post_type' => 'portfolio',
+            'posts_per_page' => -1,
+            'fields' => 'ids'
+        );
+        $portfolio_posts = get_posts($args);
+        $current_post_id = $post->ID;
+
+        // Localize script avec les IDs des posts et l'URL des posts précédent et suivant
+        wp_localize_script('lightbox-script', 'lightboxData', array(
+            'posts' => $portfolio_posts,
+            'currentPostId' => $current_post_id
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_lightbox_scripts');

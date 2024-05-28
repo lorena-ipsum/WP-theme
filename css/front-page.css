@@ -177,8 +177,11 @@ select:focus {
     }
 
     .hero-section {
+        margin-top: 80px;
         height: fit-content;
     }
+    
+    
 
     .hero-text {
         -webkit-text-stroke-width: 0.3px;
@@ -198,6 +201,15 @@ select:focus {
         height: 100%;
         object-fit: cover;
     }
+
+    .custom-select {
+        width: 270px; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
+        margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */
+    }
+
+    .select {
+        width: 270px; 
+    }
 }
 
 @media (max-width: 1000px) {
@@ -212,7 +224,6 @@ select:focus {
         flex-direction: column;
         width: 100%;
     }
-
     .custom-select {
         width: 100%; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
         margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */

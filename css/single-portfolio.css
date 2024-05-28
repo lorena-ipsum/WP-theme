@@ -168,7 +168,7 @@ h1.portfolio-title {
     background: #fff;
     z-index: 1000;
     width: 150px;
-    height: 150px;
+    height: 150px;c
 }
 
 .thumbnail-preview img {
@@ -181,6 +181,7 @@ h1.portfolio-title {
 @media (max-width: 1024px) {
     .portfolio-info, .interaction-block, .interest-text, .contact-button-container {
         flex-direction: column;
+        flex-wrap: wrap;
     }
 
     h1.portfolio-title {
@@ -190,11 +191,24 @@ h1.portfolio-title {
     .info-left, .info-right, .interest-text, .contact-button-container {
         width: 100%;
         float: none;
-        order: 1;
+        order: 2;
     }
 
     .info-right {
-        order: 2;
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info-right img {
+        width: 265px;
+        height: 397px;
+        margin-right: 56px;
+    }
+
+    .interation-bouton {
+        margin-bottom: 24px;
     }
 
     .next-photo-container {
