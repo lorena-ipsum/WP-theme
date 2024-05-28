@@ -6,7 +6,7 @@ if (isset($related_query) && $related_query->have_posts()) {
         $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
         $reference = get_field('reference'); 
         ?>
-        <div class="portfolio-item" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
+        <div class="portfolio-item" data-id="<?php the_ID(); ?>" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
             <div class="portfolio-hover">
                 <a href="<?php the_permalink(); ?>" class="view-icon">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_eye.png" alt="View Icon">
@@ -31,7 +31,7 @@ if (isset($related_query) && $related_query->have_posts()) {
         $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
         $reference = get_field('reference'); 
         ?>
-        <div class="portfolio-item" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
+        <div class="portfolio-item" data-id="<?php the_ID(); ?>" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
             <div class="portfolio-hover">
                 <a href="<?php the_permalink(); ?>" class="view-icon">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_eye.png" alt="View Icon">
