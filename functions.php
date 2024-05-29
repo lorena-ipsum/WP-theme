@@ -1,11 +1,11 @@
 <?php
+// Enqueue des styles et scripts
 function my_theme_enqueue_assets() {
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style('modal-style', get_template_directory_uri() . '/css/modal-style.css');
     wp_enqueue_style('lightbox-style', get_template_directory_uri() . '/css/lightbox.css');
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
     wp_enqueue_script('modale-scripts', get_template_directory_uri() . '/js/modale-contact.js', array('jquery'), null, true);
-    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
 
     if (is_front_page()) {
         wp_enqueue_script('front-page', get_template_directory_uri() . '/js/front-page.js', array('jquery'), null, true);
@@ -32,6 +32,9 @@ function my_theme_enqueue_assets() {
         wp_localize_script('contact-button-script', 'portfolioData', array('reference' => esc_js($portfolio_reference)));
         wp_enqueue_style('single-portfolio-style', get_template_directory_uri() . '/css/single-portfolio.css');
     }
+
+    // Enqueue Lightbox Script globally
+    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
 
@@ -75,11 +78,14 @@ function get_random_hero_image() {
 function load_more_posts() {
     check_ajax_referer('load_more_nonce', '_ajax_nonce');
 
+    $paged = isset($_POST['paged']) ? sanitize_text_field($_POST['paged']) : 1;
     $args = array(
-        'post_type'      => 'portfolio',
+        'post_type' => 'portfolio',
         'posts_per_page' => 8,
-        'paged'          => isset($_POST['paged']) ? $_POST['paged'] : 1,
-        'post_status'    => 'publish'
+        'paged' => $paged,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_status' => 'publish'
     );
 
     $query = new WP_Query($args);
@@ -87,8 +93,21 @@ function load_more_posts() {
         ob_start();
         while ($query->have_posts()) {
             $query->the_post();
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
+            $reference = get_field('reference'); // Get the reference from ACF
             ?>
-            <div class="portfolio-item">
+            <div class="portfolio-item" data-id="<?php the_ID(); ?>" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
+                <div class="portfolio-hover">
+                    <a href="<?php the_permalink(); ?>" class="view-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_eye.png" alt="View Icon">
+                    </a>
+                    <a href="#" class="expand-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_fullscreen.png" alt="Fullscreen Icon">
+                    </a>
+                    <div class="image-title"><?php the_title(); ?></div>
+                    <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
+                </div>
                 <a href="<?php the_permalink(); ?>">
                     <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
                 </a>
@@ -109,17 +128,13 @@ add_action('wp_ajax_load_more', 'load_more_posts');
 function apply_filters_posts() {
     check_ajax_referer('load_more_nonce', '_ajax_nonce');
 
-    $category = isset($_POST['category']) ? $_POST['category'] : '';
-    $format = isset($_POST['format']) ? $_POST['format'] : '';
-    $order = isset($_POST['order']) ? $_POST['order'] : 'DESC';
-
-    error_log('Category: ' . $category);
-    error_log('Format: ' . $format);
-    error_log('Order: ' . $order);
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+    $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
 
     $args = array(
         'post_type' => 'portfolio',
-        'posts_per_page' => -1,
+        'posts_per_page' => 8,
         'orderby' => 'date',
         'order' => $order,
         'post_status' => 'publish'
@@ -147,15 +162,26 @@ function apply_filters_posts() {
         $args['tax_query'] = $tax_query;
     }
 
-    error_log(print_r($args, true));
-
     $query = new WP_Query($args);
     if ($query->have_posts()) {
         ob_start();
         while ($query->have_posts()) {
             $query->the_post();
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            $category_list = $categories ? join(', ', wp_list_pluck($categories, 'name')) : '';
+            $reference = get_field('reference'); // Get the reference from ACF
             ?>
-            <div class="portfolio-item">
+            <div class="portfolio-item" data-id="<?php the_ID(); ?>" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($category_list); ?>">
+                <div class="portfolio-hover">
+                    <a href="<?php the_permalink(); ?>" class="view-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_eye.png" alt="View Icon">
+                    </a>
+                    <a href="#" class="expand-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon_fullscreen.png" alt="Fullscreen Icon">
+                    </a>
+                    <div class="image-title"><?php the_title(); ?></div>
+                    <div class="portfolio-category"><?php echo esc_html($category_list); ?></div>
+                </div>
                 <a href="<?php the_permalink(); ?>">
                     <?php the_post_thumbnail('full', array('class' => 'portfolio-image')); ?>
                 </a>
@@ -171,4 +197,31 @@ function apply_filters_posts() {
 }
 add_action('wp_ajax_nopriv_apply_filters', 'apply_filters_posts');
 add_action('wp_ajax_apply_filters', 'apply_filters_posts');
-?>
+
+// Lightbox
+function get_adjacent_post_url($post, $previous = true) {
+    $adjacent_post = get_adjacent_post(false, '', $previous);
+    return $adjacent_post ? get_permalink($adjacent_post->ID) : '';
+}
+
+function enqueue_lightbox_scripts() {
+    if (is_singular('portfolio')) {
+        global $post;
+
+        // Récupérer tous les IDs des posts de type portfolio
+        $args = array(
+            'post_type' => 'portfolio',
+            'posts_per_page' => -1,
+            'fields' => 'ids'
+        );
+        $portfolio_posts = get_posts($args);
+        $current_post_id = $post->ID;
+
+        // Localize script avec les IDs des posts et l'URL des posts précédent et suivant
+        wp_localize_script('lightbox-script', 'lightboxData', array(
+            'posts' => $portfolio_posts,
+            'currentPostId' => $current_post_id
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_lightbox_scripts');

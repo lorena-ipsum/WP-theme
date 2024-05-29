@@ -59,6 +59,7 @@ function setupLoadMore() {
                 loadMoreBtn.textContent = 'Charger plus';
                 // Réinitialiser les fonctionnalités de survol et de lightbox
                 initializePortfolioHoverAndLightbox();
+                updateLightboxData();
             } else {
                 loadMoreBtn.textContent = 'Aucun autre post à charger';
                 loadMoreBtn.disabled = true;
@@ -100,6 +101,7 @@ function applyFilters() {
             document.querySelector('.portfolio-list').innerHTML = response.data;
             // Réinitialiser les fonctionnalités de survol et de lightbox
             initializePortfolioHoverAndLightbox();
+            updateLightboxData();
         } else {
             document.querySelector('.portfolio-list').innerHTML = '<p>Aucun post trouvé pour les filtres sélectionnés.</p>';
         }
@@ -107,4 +109,12 @@ function applyFilters() {
     .catch(error => {
         console.error('Erreur AJAX:', error);
     });
+}
+
+function updateLightboxData() {
+    lightboxData.posts = jQuery('.portfolio-item').map(function() {
+        return jQuery(this).data('id');
+    }).get();
+
+    console.log("Updated lightboxData with posts:", lightboxData.posts);
 }
