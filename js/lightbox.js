@@ -1,9 +1,12 @@
-// Initialize the lightbox and hover events
+console.log("Wow, quelle belle lightbox!");
+// Initialiser les événements de la lightbox et du survol
 function initializePortfolioHoverAndLightbox() {
+    // Désactiver les anciens événements pour éviter les doublons
     jQuery('body').off('click', '.expand-icon');
     jQuery('body').off('click', '.close-lightbox');
     jQuery('.portfolio-item a').off('click');
 
+    // Événement pour ouvrir la lightbox
     jQuery('body').on('click', '.expand-icon', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -15,14 +18,16 @@ function initializePortfolioHoverAndLightbox() {
 
         console.log("Opening lightbox for post ID:", postId);
 
-        lightboxData.currentPostId = postId; // Set the current post ID
+        lightboxData.currentPostId = postId; // Définir l'ID du post actuel
 
+        // Mettre à jour le contenu de la lightbox
         jQuery('.lightbox-modal img.lightbox-content').attr('src', imgSrc);
         jQuery('.lightbox-details .reference').text(reference);
         jQuery('.lightbox-details .category').text(category);
         jQuery('.lightbox-modal').fadeIn();
     });
 
+    // Événement pour fermer la lightbox
     jQuery('body').on('click', '.close-lightbox', function() {
         jQuery('.lightbox-modal').fadeOut(function() {
             jQuery(this).find('img.lightbox-content').attr('src', '');
@@ -31,15 +36,17 @@ function initializePortfolioHoverAndLightbox() {
         });
     });
 
+    // Événement pour naviguer vers l'image précédente dans la lightbox
     jQuery('body').on('click', '.lightbox-prev', function() {
         navigateLightbox('prev');
     });
 
+    // Événement pour naviguer vers l'image suivante dans la lightbox
     jQuery('body').on('click', '.lightbox-next', function() {
         navigateLightbox('next');
     });
 
-    // Optional: Close lightbox when clicking outside of the content
+    // Optionnel: Fermer la lightbox en cliquant à l'extérieur du contenu
     jQuery('.lightbox-modal').on('click', function(e) {
         if (e.target === this) {
             jQuery(this).fadeOut(function() {
@@ -50,11 +57,11 @@ function initializePortfolioHoverAndLightbox() {
         }
     });
 
-    // Ensure lightbox is hidden on page load
+    // Assurer que la lightbox est cachée au chargement de la page
     jQuery('.lightbox-modal').hide();
 }
 
-// Function to navigate lightbox content
+// Fonction pour naviguer dans le contenu de la lightbox
 function navigateLightbox(direction) {
     var adjacentPostId = getAdjacentPostId(direction);
     if (adjacentPostId) {
@@ -62,7 +69,7 @@ function navigateLightbox(direction) {
     }
 }
 
-// Function to load lightbox content
+// Fonction pour charger le contenu de la lightbox
 function loadLightboxContent(postId) {
     var portfolioItem = jQuery('.portfolio-item[data-id="' + postId + '"]');
     if (portfolioItem.length > 0) {
@@ -73,16 +80,17 @@ function loadLightboxContent(postId) {
 
         console.log("Loading content for post ID:", newPostId);
 
+        // Mettre à jour le contenu de la lightbox
         jQuery('.lightbox-modal img.lightbox-content').attr('src', imgSrc);
         jQuery('.lightbox-details .reference').text(reference);
         jQuery('.lightbox-details .category').text(category);
 
-        // Update the current post ID in the global data
+        // Mettre à jour l'ID du post actuel dans les données globales
         lightboxData.currentPostId = newPostId;
     }
 }
 
-// Function to get the ID of the adjacent post
+// Fonction pour obtenir l'ID du post adjacent
 function getAdjacentPostId(direction) {
     var currentIndex = lightboxData.posts.indexOf(lightboxData.currentPostId);
     var newIndex;
@@ -94,6 +102,7 @@ function getAdjacentPostId(direction) {
 
     console.log("Current index:", currentIndex);
 
+    // Calculer le nouvel index basé sur la direction
     if (direction === 'prev') {
         newIndex = (currentIndex === 0) ? lightboxData.posts.length - 1 : currentIndex - 1;
     } else {
@@ -105,9 +114,9 @@ function getAdjacentPostId(direction) {
     return newPostId;
 }
 
-// Initialize on document ready
+// Initialiser au chargement du document
 jQuery(document).ready(function($) {
-    // Initialize lightboxData with the list of portfolio post IDs
+    // Initialiser lightboxData avec la liste des IDs de posts du portfolio
     lightboxData = {
         posts: jQuery('.portfolio-item').map(function() {
             return jQuery(this).data('id');

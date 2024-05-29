@@ -8,7 +8,7 @@
  */
 
 /**
- * Core class used to implement an HTML list of nav menu items.
+ * Classe principale utilisée pour implémenter une liste HTML des éléments de menu de navigation.
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@
  */
 class Mota_Walker_Nav_Menu extends Walker {
     /**
-     * What the class handles.
+     * Type de structure que la classe gère.
      *
      * @since 3.0.0
      * @var string
@@ -26,10 +26,10 @@ class Mota_Walker_Nav_Menu extends Walker {
     public $tree_type = array('post_type', 'taxonomy', 'custom');
 
     /**
-     * Database fields to use.
+     * Champs de la base de données à utiliser.
      *
      * @since 3.0.0
-     * @todo Decouple this.
+     * @todo Découpler ceci.
      * @var string[]
      *
      * @see Walker::$db_fields
@@ -40,15 +40,15 @@ class Mota_Walker_Nav_Menu extends Walker {
     );
 
     /**
-     * Starts the list before the elements are added.
+     * Commence la liste avant que les éléments ne soient ajoutés.
      *
      * @since 3.0.0
      *
      * @see Walker::start_lvl()
      *
-     * @param string   $output Used to append additional content (passed by reference).
-     * @param int      $depth  Depth of menu item. Used for padding.
-     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     * @param string   $output Utilisé pour ajouter du contenu supplémentaire (passé par référence).
+     * @param int      $depth  Profondeur de l'élément de menu. Utilisé pour le padding.
+     * @param stdClass $args   Un objet des arguments de wp_nav_menu().
      */
     public function start_lvl(&$output, $depth = 0, $args = null) {
         $indent = str_repeat("\t", $depth);
@@ -60,15 +60,15 @@ class Mota_Walker_Nav_Menu extends Walker {
     }
 
     /**
-     * Ends the list of after the elements are added.
+     * Termine la liste après que les éléments ont été ajoutés.
      *
      * @since 3.0.0
      *
      * @see Walker::end_lvl()
      *
-     * @param string   $output Used to append additional content (passed by reference).
-     * @param int      $depth  Depth of menu item. Used for padding.
-     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     * @param string   $output Utilisé pour ajouter du contenu supplémentaire (passé par référence).
+     * @param int      $depth  Profondeur de l'élément de menu. Utilisé pour le padding.
+     * @param stdClass $args   Un objet des arguments de wp_nav_menu().
      */
     public function end_lvl(&$output, $depth = 0, $args = null) {
         $indent = str_repeat("\t", $depth);
@@ -76,20 +76,20 @@ class Mota_Walker_Nav_Menu extends Walker {
     }
 
     /**
-     * Starts the element output.
+     * Commence la sortie de l'élément.
      *
      * @since 3.0.0
-     * @since 4.4.0 The {@see 'nav_menu_item_args'} filter was added.
-     * @since 5.9.0 Renamed `$item` to `$data_object` and `$id` to `$current_object_id`
-     *              to match parent class for PHP 8 named parameter support.
+     * @since 4.4.0 Le filtre {@see 'nav_menu_item_args'} a été ajouté.
+     * @since 5.9.0 Renommé `$item` en `$data_object` et `$id` en `$current_object_id`
+     *              pour correspondre à la classe parente pour la prise en charge des paramètres nommés PHP 8.
      *
      * @see Walker::start_el()
      *
-     * @param string   $output            Used to append additional content (passed by reference).
-     * @param WP_Post  $data_object       Menu item data object.
-     * @param int      $depth             Depth of menu item. Used for padding.
-     * @param stdClass $args              An object of wp_nav_menu() arguments.
-     * @param int      $current_object_id Optional. ID of the current menu item. Default 0.
+     * @param string   $output            Utilisé pour ajouter du contenu supplémentaire (passé par référence).
+     * @param WP_Post  $data_object       Objet de données de l'élément de menu.
+     * @param int      $depth             Profondeur de l'élément de menu. Utilisé pour le padding.
+     * @param stdClass $args              Un objet des arguments de wp_nav_menu().
+     * @param int      $current_object_id ID de l'élément de menu actuel. Par défaut 0.
      */
     public function start_el(&$output, $data_object, $depth = 0, $args = null, $current_object_id = 0) {
         $menu_item = $data_object;
@@ -130,30 +130,30 @@ class Mota_Walker_Nav_Menu extends Walker {
     }
 
     /**
-     * Ends the element output, if needed.
+     * Termine la sortie de l'élément, si nécessaire.
      *
      * @since 3.0.0
-     * @since 5.9.0 Renamed `$item` to `$data_object` to match parent class for PHP 8 named parameter support.
+     * @since 5.9.0 Renommé `$item` en `$data_object` pour correspondre à la classe parente pour la prise en charge des paramètres nommés PHP 8.
      *
      * @see Walker::end_el()
      *
-     * @param string   $output      Used to append additional content (passed by reference).
-     * @param WP_Post  $data_object Menu item data object. Not used.
-     * @param int      $depth       Depth of page. Not Used.
-     * @param stdClass $args        An object of wp_nav_menu() arguments.
+     * @param string   $output      Utilisé pour ajouter du contenu supplémentaire (passé par référence).
+     * @param WP_Post  $data_object Objet de données de l'élément de menu. Non utilisé.
+     * @param int      $depth       Profondeur de la page. Non utilisé.
+     * @param stdClass $args        Un objet des arguments de wp_nav_menu().
      */
     public function end_el(&$output, $data_object, $depth = 0, $args = null) {
         $output .= "</li>\n";
     }
 
     /**
-     * Builds a string of HTML attributes from an array of key/value pairs.
-     * Empty values are ignored.
+     * Construit une chaîne d'attributs HTML à partir d'un tableau de paires clé/valeur.
+     * Les valeurs vides sont ignorées.
      *
      * @since 6.3.0
      *
-     * @param  array $atts Optional. An array of HTML attribute key/value pairs. Default empty array.
-     * @return string A string of HTML attributes.
+     * @param  array $atts Un tableau facultatif de paires clé/valeur d'attributs HTML. Par défaut tableau vide.
+     * @return string Une chaîne d'attributs HTML.
      */
     protected function build_atts($atts = array()) {
         $attribute_string = '';

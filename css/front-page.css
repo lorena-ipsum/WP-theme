@@ -1,6 +1,6 @@
 /* Hero Header */
 .hero-section {
-    max-width: 1440px;  
+    max-width: 100%;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -15,9 +15,9 @@
 }
 
 .hero-text {
-    -webkit-text-stroke-width: 0.8621307611465454px;
+    -webkit-text-stroke-width: 0.054rem; /* 0.8621307611465454px */
     -webkit-text-stroke-color: var(--White);
-    color: transparent; /* Torna a cor do texto transparente */
+    color: transparent;
     font-family: 'Space Mono';
     font-size: 6rem; /* 96px */
     font-style: italic;
@@ -27,7 +27,7 @@
 }
 
 .main-contenu {
-    max-width: 1148px;
+    max-width: 71.75rem; /* 1148px */
     margin: auto; 
 }
 
@@ -36,7 +36,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 76px 0px 40px 0px;
+    margin: 4.75rem 0 2.5rem; /* 76px 0px 40px 0px */
 }
 
 .filter-left {
@@ -48,7 +48,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 16.25rem; /* 260px / 16 */
+    width: 16.25rem; /* 260px */
 }
 
 .custom-select i {
@@ -60,37 +60,36 @@
 
 select {
     border-radius: 0.5rem; /* 8px */
-    border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
-    background: var(--White, #FFF);
+    border: 1.3px solid var(--Gris-medium);
+    background: var(--White);
     padding: 0.6875rem 1.125rem; /* 11px 18px */
-    -webkit-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
-    -moz-appearance: none; /* Pour annuler le style par défaut dans certains navigateurs */
-    appearance: none !important; /* Pour annuler le style par défaut */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none !important;
     width: 100%;
-    height: 2.625rem; /* 42px / 16 */
-    padding-right: 2.5rem; /* 40px / 16 */
-    transition: background 1.0s ease, border-color 0.5s ease;
+    height: 2.625rem; /* 42px */
+    padding-right: 2.5rem; /* 40px */
+    transition: background 1s ease, border-color 0.5s ease;
 }
 
 select:hover {
-    background: #E00000;
+    background: var(--cor-mariage);
     color: var(--White);
 }
 
 select option {
-    background: solid var(--White, #FFF) !important;
-    color: #000;
+    background: var(--White) !important;
+    color: var(--noir-100);
 }
 
 select option:hover {
-    background: #E00000;
+    background: var(--cor-mariage);
     color: var(--White);
 }
 
-/* Supprimer la bordure bleue par défaut lors de la sélection */
 select:focus {
     outline: none;
-    border-color: var(--Blues-Gray2, #B8BBC2);
+    border-color: var(--Gris-medium);
 }
 
 /* Portfolio */
@@ -111,8 +110,8 @@ select:focus {
 }
 
 .portfolio-image {
-    max-width: 564px;
-    max-height: 495px;
+    max-width: 35.25rem; /* 564px */
+    max-height: 30.9375rem; /* 495px */
     min-height: 17.4250625rem; /* 278.801px */
     min-width: 19.8540625rem; /* 317.665px */
     object-fit: cover;
@@ -138,35 +137,35 @@ select:focus {
 }
 
 #load-more button {
-    width: 17rem; /* 272px / 16 */
-    height: 3.125rem; /* 50px / 16 */
+    width: 17rem; /* 272px */
+    height: 3.125rem; /* 50px */
     padding: 0.5rem 0.9375rem; /* 8px 15px */
     justify-content: center;
     align-items: center;
     gap: 0.625rem; /* 10px */
     border-radius: 0.125rem; /* 2px */
     border: none;
-    background: #D8D8D8;
-    box-shadow: 0px 0.125rem 0.0625rem 0px rgba(0, 0, 0, 0.02); /* 0px 2px 1px */
+    background: var(--Gris-medium);
+    box-shadow: 0 0.125rem 0.0625rem rgba(0, 0, 0, 0.02); /* 0px 2px 1px */
     transition: background 1s ease, font-weight 0.3s ease;
 }
 
 #load-more button:hover {
-    background: #000000;
+    background: var(--noir-100);
     cursor: pointer;
     color: var(--White);
 }
 
 .no-more-posts {
-    display: block; 
+    display: block;
     text-align: center;
     margin: 1.25rem auto; /* 20px */
     font-family: 'Space Mono', monospace; 
-    color: #333; 
+    color: var(--Bleu-fonc); 
     font-size: 1rem; 
 }
 
-/* Media Queries  */
+/* Media Queries */
 @media (max-width: 768px) {
     .portfolio-list {
         display: flex;
@@ -177,22 +176,20 @@ select:focus {
     }
 
     .hero-section {
-        margin-top: 80px;
+        margin-top: 5rem; /* 80px */
         height: fit-content;
     }
-    
-    
 
     .hero-text {
-        -webkit-text-stroke-width: 0.3px;
-        font-size: 27.588px; 
+        -webkit-text-stroke-width: 0.01875rem; /* 0.3px */
+        font-size: 1.725rem; /* 27.588px */
     }
 
     .portfolio-item {
         height: auto; /* Permet à la hauteur de s'ajuster */
         min-height: 17.4250625rem; /* 278.801px */
-        width: 317.665px;
-        height: 278.801px;
+        width: 19.8540625rem; /* 317.665px */
+        height: 17.4250625rem; /* 278.801px */
         flex-shrink: 0;
     }
 
@@ -203,12 +200,12 @@ select:focus {
     }
 
     .custom-select {
-        width: 270px; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
-        margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */
+        width: 16.875rem; /* 270px */
+        margin: auto; 
     }
 
     .select {
-        width: 270px; 
+        width: 16.875rem; /* 270px */
     }
 }
 
@@ -223,9 +220,12 @@ select:focus {
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-top: 0.625rem; /* 10px */
     }
+
     .custom-select {
-        width: 100%; /* Adapter la largeur des sélecteurs pour occuper toute la largeur disponible */
-        margin-bottom: 0.625rem; /* Ajouter de l'espace entre les sélecteurs */
+        width: 16.875rem; /* 270px */
+        margin-bottom: 0.625rem;
+        margin: auto;
     }
 }

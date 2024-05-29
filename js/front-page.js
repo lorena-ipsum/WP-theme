@@ -1,10 +1,13 @@
+console.log("Hola, je suis ta front-page, cheri!");
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchCategoriesAndFormats();
     setupLoadMore();
     setupFilters();
-    initializePortfolioHoverAndLightbox(); // Initial call to set up hover and lightbox
+    initializePortfolioHoverAndLightbox(); 
 });
 
+// Fonction pour récupérer les catégories et formats depuis l'API WordPress
 function fetchCategoriesAndFormats() {
     fetch(`${wpApiSettings.root}wp/v2/categorie`, {
         headers: {
@@ -35,6 +38,7 @@ function fetchCategoriesAndFormats() {
     });
 }
 
+// Fonction pour configurer le bouton "Charger plus"
 function setupLoadMore() {
     const loadMoreBtn = document.querySelector('#load-more button');
     let page = 1;
@@ -72,6 +76,7 @@ function setupLoadMore() {
     });
 }
 
+// Fonction pour configurer les filtres
 function setupFilters() {
     const filters = document.querySelectorAll('#category-filter, #format-filter, #sort-filter');
     filters.forEach(filter => {
@@ -79,6 +84,7 @@ function setupFilters() {
     });
 }
 
+// Fonction pour appliquer les filtres sélectionnés
 function applyFilters() {
     let category = document.getElementById('category-filter').value;
     let format = document.getElementById('format-filter').value;
@@ -111,6 +117,7 @@ function applyFilters() {
     });
 }
 
+// Fonction pour mettre à jour les données de la lightbox
 function updateLightboxData() {
     lightboxData.posts = jQuery('.portfolio-item').map(function() {
         return jQuery(this).data('id');

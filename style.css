@@ -14,7 +14,7 @@ Text Domain: NathalieMota
     --cor-mariage: #e00000;
     --cor-concert: #FE5858;
     --cor-television: #FFD6D6;
-    --noir-100: #000;
+    --noir-100: #000000;
     --Bleu-fonc: #313144;
     --Gris-fonc: #C4C4C4;
     --Gris-medium: #D8D8D8;
@@ -48,17 +48,36 @@ Text Domain: NathalieMota
 }
 
 body {
-    background-color: #FFFFFF;
+    background-color: var(--White);
     max-width: 1440px;
     margin: auto;
 }
 
+.h2 {
+    color: var(--noir-100);
+    font-family: "Space Mono";
+    font-size: 66px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 58px; /* 87.879% */
+    text-transform: uppercase;
+}
+
+.p {
+    color: var(--noir-100);
+    text-align: right;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
 
 /* ***HEADER*** */
 .site-header {
     height: 5rem; /* 80px converted to rem */
     width: 100%;
-    background-color: white;
+    background-color: var(--White);
     box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
 
@@ -115,7 +134,7 @@ body {
     align-items: center; 
     height: 5rem; 
     border-top: 0.09375rem solid var(--noir-100); 
-    background-color: white;
+    background-color: var(--White);
 }
 
 #footer-menu {
@@ -176,7 +195,7 @@ body {
         position: absolute;
         right: 40px !important; 
         top: -20px !important; 
-        color: #000;
+        color: var(--noir-100);
         width: 27.4px !important; 
         height: 18.8px !important; 
     }
@@ -189,7 +208,7 @@ body {
         position:absolute;
         right: 1rem;
         top: 1rem;
-        color: #000;
+        color: var(--noir-100);
     }
 
     .main-navigation .main-menu {
@@ -213,7 +232,7 @@ body {
 
     .main-navigation.toggled .main-menu li a {
         font-size: 2rem;
-        color: white;
+        color: var(--White);
         padding: 1rem;
         width: 100%;
         text-align: center;

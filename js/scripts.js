@@ -1,4 +1,4 @@
-console.log("you got it girl!");
+console.log("You got it girl!");
 
 // Fonctionnalité de menu mobile
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const siteNavigation = document.querySelector('.main-navigation');
             const icon = this.querySelector('i');
             siteNavigation.classList.toggle('toggled');
+            // Changer l'icône en fonction de l'état du menu
             if (siteNavigation.classList.contains('toggled')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-x');
@@ -26,5 +27,9 @@ function fadeIn() {
         element.style.opacity = 1;
     });
 }
+
+// Appliquer l'effet de fondu lorsque le document est chargé
 document.addEventListener('DOMContentLoaded', fadeIn);
+
+// Appliquer l'effet de fondu lorsque la fenêtre est complètement chargée
 window.addEventListener('load', fadeIn);
