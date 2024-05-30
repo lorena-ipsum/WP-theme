@@ -256,8 +256,8 @@ h1.portfolio-title {
     .portfolio-item {
         margin-top: 0;
         margin-bottom: 1.25rem; /* 20px */
-        width: 19.8540625rem; /* 317px */
-        height: 17.4250625rem; /* 278px */
+        min-width: 19.8540625rem; /* 317px */
+        min-height: 17.4250625rem; /* 278px */
         object-fit: cover;
         margin-right: 0;
         margin-bottom: 0.625rem; /* 10px */
@@ -268,8 +268,7 @@ h1.portfolio-title {
     }
 
     .portfolio-item a img {
-        width: 19.8540625rem; /* 317px */
-        height: 17.4250625rem; /* 278px */
-        height: auto;
+        max-width: 19.8540625rem; /* 317px */
+        max-height: 17.4250625rem; /* 278px */
     }
 }
